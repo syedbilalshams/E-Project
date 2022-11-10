@@ -34,11 +34,11 @@
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
-        </div>
+        </div> -->
         <!-- Spinner End -->
 
 
@@ -54,7 +54,13 @@
 
             <!-- Navbar End -->
             <br>
-
+            <?php 
+             include "config.php";
+             $query = "Select * from `corona`";
+             $result = mysqli_connect($conn,$query);
+             if(mysqli_num_rows($result)>0){
+                
+            ?>
             <div class="col-12">
                         <div class="bg-light rounded h-100 p-4">
                             <h6 class="mb-4">Responsive Table</h6>
@@ -72,6 +78,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php  while($rows = mysqli_fetch_assoc($result)){ ?>
                                         <tr>
                                             <th scope="row">1</th>
                                             <td>John</td>
@@ -81,18 +88,20 @@
                                             <td>123</td>
                                             <td>Member</td>
                                         </tr>
-                                       
+                                        <?php } ?>
+                                        
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
+                    <?php } ?>
                 </div>
             </div>
-
+            
 
             <!-- Footer Start -->
-                <?php include "Footer.php" ?>
+                <!--  -->
             <!-- Footer End -->
         </div>
         <!-- Content End -->

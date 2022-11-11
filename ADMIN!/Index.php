@@ -10,6 +10,7 @@
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +31,11 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
-
+<style>
+    .aa{
+        margin-left: 20px;
+    }
+</style>
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
@@ -54,48 +59,65 @@
 
             <!-- Navbar End -->
             <br>
-            <?php 
-             include "config.php";
-             $query = "Select * from `corona`";
-             $result = mysqli_connect($conn,$query);
-             if(mysqli_num_rows($result)>0){
-                
-            ?>
+            <div class="bt">
+
+                <a href="add-user.php" type="button" class="btn btn-primary m-2 ">Add-User</a>
+            </div>
             <div class="col-12">
+                <?php 
+                include "config.php";
+                $query = "SELECT * FROM `user`";
+                $result = mysqli_query($conn,$query);
+                if(mysqli_num_rows($result)>0){
+
+                ?>
                         <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Responsive Table</h6>
+                            <h6 class="mb-4">Users</h6>
+
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">First Name</th>
-                                            <th scope="col">Last Name</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Username</th>
+                                            <th scope="col">Phone</th>
                                             <th scope="col">Email</th>
-                                            <th scope="col">Country</th>
-                                            <th scope="col">ZIP</th>
-                                            <th scope="col">Status</th>
+                                            <th scope="col">Role</th>
+                                            <th scope="col">Update</th>
+                                            <th scope="col">Delete</th>
                                         </tr>
                                     </thead>
+                                    <?php
+                                    while($rows = mysqli_fetch_assoc($result)){
+
+                                    
+                                    ?>
                                     <tbody>
-                                        <?php  while($rows = mysqli_fetch_assoc($result)){ ?>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>John</td>
-                                            <td>Doe</td>
-                                            <td>jhon@email.com</td>
-                                            <td>USA</td>
-                                            <td>123</td>
-                                            <td>Member</td>
+                                            <td><?php echo $rows["u_id"]; ?></td>
+                                            <th scope="row"><?php echo $rows["name"]; ?></th>
+                                            <td><?php echo $rows["username"]; ?></td>
+                                            <td><?php echo $rows["phone"]; ?></td>
+                                            <td><?php echo $rows["email"]; ?></td>
+                                            <td><?php if($rows["role"]==1){
+                                               echo "Admin";
+                                            } 
+                                            else{
+                                                echo "User";
+                                            }
+                                            ?></td>
+                                            <td><a class="aa" href="update_user.php?id=<?php echo $rows["u_id"]; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                            <td><a class="aa" href="delete_user.php?id=<?php echo $rows["u_id"]; ?>"><i class="fa-solid fa-xmark"></i></a></td>
                                         </tr>
-                                        <?php } ?>
-                                        
+
+                                    <?php } ?>    
                                     </tbody>
                                 </table>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
-                    <?php } ?>
                 </div>
             </div>
             

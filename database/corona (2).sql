@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2022 at 04:51 PM
+-- Generation Time: Nov 12, 2022 at 04:49 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -30,10 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `hospital` (
   `h_id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `city` varchar(100) NOT NULL,
-  `pfizer` varchar(100) DEFAULT NULL,
-  `sinovac` varchar(100) DEFAULT NULL,
-  `moderna` varchar(100) DEFAULT NULL
+  `city` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -70,6 +67,14 @@ CREATE TABLE `user` (
   `email` varchar(100) NOT NULL,
   `role` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`u_id`, `name`, `username`, `password`, `phone`, `email`, `role`) VALUES
+(5, 'usman shams', 'usman', '123', 2147483647, 'werfwef@gmail.com', '1'),
+(6, 'abdullah babar', 'abdullah', '123', 2147483647, 'sfedas@gmail.com', '0');
 
 -- --------------------------------------------------------
 
@@ -131,7 +136,7 @@ ALTER TABLE `patient`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `vaccine`

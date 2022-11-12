@@ -1,3 +1,6 @@
+<?php 
+ob_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,6 +114,7 @@ body{
                                 include "config.php";
                                 $query = "INSERT INTO `user`( `name`, `username`, `password`, `phone`, `email`, `role`) VALUES ('{$name}','{$user}','{$password}','{$phone}','{$email}','{$role}')";
                                 mysqli_query($conn,$query);
+                                header("location:http://localhost/e_project/e-project/admin!/index.php");
                             }
                             ?>
                         </div>

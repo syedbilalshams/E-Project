@@ -195,7 +195,17 @@ img {
      border-color: #ffffff !important;
      box-shadow: 0 0 0 .2rem rgba(255, 255, 255, .25);
 }
-
+#abc{
+    color: black !important;
+    
+}
+#abc:hover{
+color: black !important;
+}
+#pqr{
+    background-color:#ed1c24 ;
+    border: none !important;
+}
 .navbar-form input {
      border: none !important;
 }

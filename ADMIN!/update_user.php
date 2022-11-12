@@ -1,4 +1,6 @@
-
+<?php 
+ob_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -132,8 +134,8 @@ if(mysqli_num_rows($result)>0){
                             $query = "UPDATE `user` SET `name`='{$name}',`username`='{$user}',`password`='{$password}',`phone`='{$phone}',`email`='{$email}',`role`='{$role}' WHERE `u_id` = '{$id}'";
                             mysqli_query($conn,$query);
                             
+                            header("location:http://localhost/e_project/e-project/admin!/index.php");
                         }
-                        // header("location:http://localhost/e_project/e-project/admin!/index.php");
                         ?>
                         </div>
                     </div>

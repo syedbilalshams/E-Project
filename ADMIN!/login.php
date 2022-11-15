@@ -1,5 +1,11 @@
 <?php 
 ob_start();
+
+session_start();
+if(isset($_SESSION['user'])){
+    header("location:http://localhost/e_project/e-project/admin!/");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,13 +89,14 @@ ob_start();
                         $password = $_POST["password"];
 
                         include "config.php";
-                        $query = "SELECT `u_id`,`username`,`role` FROM `user` WHERE `username`='{$user}' AND `password`='{$password}'";
+                        $query = "SELECT `u_id`,`username`,`role`,`image` FROM `user` WHERE `username`='{$user}' AND `password`='{$password}'";
                         $result = mysqli_query($conn,$query);
                         if(mysqli_num_rows($result)>0){
                             while($row = mysqli_fetch_assoc($result)){
                             session_start();
                             $_SESSION['u_id']=  $row['u_id'];
                             $_SESSION['user']= $row['username'];
+                            $_SESSION['image']= $row['image'];
                         
                             $_SESSION['role']=$row['role'];
                             header("location:http://localhost/e_project/e-project/admin!/");

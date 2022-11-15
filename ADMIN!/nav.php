@@ -1,5 +1,9 @@
 <?php
-session_start()
+session_start();
+include "config.php";
+if(!isset($_SESSION['user'])){
+    header("location:http://localhost/e_project/e-project/admin!/login.php");
+}
 ?>
 <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
@@ -8,7 +12,7 @@ session_start()
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <img class="rounded-circle" src="upload/<?php echo $_SESSION["image"]; ?>" alt="" style="width: 40px; height: 40px;">
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">

@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -32,10 +32,11 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 <style>
-    .aa{
+    .aa {
         margin-left: 20px;
     }
 </style>
+
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
@@ -48,89 +49,101 @@
 
 
         <!-- Sidebar Start -->
-            <?php include "nav.php"; ?>
-            <!-- Sidebar End -->
-            
-            
-            <!-- Content Start -->
-            <div class="content">
-                <!-- Navbar Start -->
-                <?php include "Side.php"; ?>
+        <?php include "nav.php"; ?>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <?php include "Side.php"; ?>
 
             <!-- Navbar End -->
             <br>
             <div class="bt">
-
-                <a href="add-user.php" type="button" class="btn btn-primary m-2 ">Add-User</a>
-            </div>
-            <div class="col-12">
-                <?php 
+                <?php
                 include "config.php";
                 $query = "SELECT * FROM `user`";
-                $result = mysqli_query($conn,$query);
-                if(mysqli_num_rows($result)>0){
+                $result = mysqli_query($conn, $query);
+                if (mysqli_num_rows($result) > 0) {
 
                 ?>
-                        <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Users</h6>
 
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Username</th>
-                                            <th scope="col">Phone</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Role</th>
-                                            <th scope="col">Update</th>
-                                            <th scope="col">Delete</th>
-                                        </tr>
-                                    </thead>
-                                    <?php
-                                    while($rows = mysqli_fetch_assoc($result)){
+                    <?php
+                    if ($_SESSION["role"] == 1) {
+                    ?>
+                        <a href="add-user.php" type="button" class="btn btn-primary m-2 ">Add-User</a>
 
-                                    
-                                    ?>
-                                    <tbody>
-                                        <tr>
-                                            <td><?php echo $rows["u_id"]; ?></td>
-                                            <th scope="row"><?php echo $rows["name"]; ?></th>
-                                            <td><?php echo $rows["username"]; ?></td>
-                                            <td><?php echo $rows["phone"]; ?></td>
-                                            <td><?php echo $rows["email"]; ?></td>
-                                            <td><?php if($rows["role"]==1){
-                                               echo "Admin";
-                                            } 
-                                            else{
+                    <?php } ?>
+
+            </div>
+            <div class="col-12">
+
+                <div class="bg-light rounded h-100 p-4">
+                    <h6 class="mb-4">Users</h6>
+
+
+                    <div class="table-responsive">
+                        <table class="table">
+
+                            <thead>
+                                <tr>
+
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Role</th>
+                                    <th scope="col">Update</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+
+                            <?php
+                            while ($rows = mysqli_fetch_assoc($result)) {
+
+
+                            ?>
+
+
+                                <tbody>
+                                    <tr>
+                                        <td><?php echo $rows["u_id"]; ?></td>
+                                        <th scope="row"><?php echo $rows["name"]; ?></th>
+                                        <td><?php echo $rows["username"]; ?></td>
+                                        <td><?php echo $rows["phone"]; ?></td>
+                                        <td><?php echo $rows["email"]; ?></td>
+                                        <td><?php if ($rows["role"] == 1) {
+                                                echo "Admin";
+                                            } else {
                                                 echo "User";
                                             }
                                             ?></td>
-                                            <td><a class="aa" href="update_user.php?id=<?php echo $rows["u_id"]; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                                            <td><a class="aa" href="delete_user.php?id=<?php echo $rows["u_id"]; ?>"><i class="fa-solid fa-xmark"></i></a></td>
-                                        </tr>
+                                        <td><a class="aa" href="update_user.php?id=<?php echo $rows["u_id"]; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                        <td><a class="aa" href="delete_user.php?id=<?php echo $rows["u_id"]; ?>"><i class="fa-solid fa-xmark"></i></a></td>
+                                    </tr>
 
-                                    <?php } ?>    
-                                    </tbody>
-                                </table>
-                                <?php } ?>
-                            </div>
-                        </div>
+                                <?php  } ?>
+                                </tbody>
+                        </table>
+                    <?php } ?>
                     </div>
                 </div>
             </div>
-            
-
-            <!-- Footer Start -->
-                <!--  -->
-            <!-- Footer End -->
         </div>
-        <!-- Content End -->
+    </div>
 
 
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <!-- Footer Start -->
+    <!--  -->
+    <!-- Footer End -->
+    </div>
+    <!-- Content End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
     <!-- JavaScript Libraries -->

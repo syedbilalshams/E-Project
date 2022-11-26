@@ -19,6 +19,7 @@
       <!-- style css -->
       <link rel="stylesheet" href="css/style.css">
       <!-- Responsive-->
+      <link rel="stylesheet" href="css/covid.css">
       <link rel="stylesheet" href="css/responsive.css">
       <!-- fevicon -->
       <link rel="icon" href="images/fevicon.png" type="image/gif" />
@@ -58,7 +59,7 @@
                      <div class="navbar-area">
                         <nav class="site-navbar">
                            <ul>
-                              <li><a class="active" href="index.html">Home</a></li>
+                              <li><a class="active" href="index.php">Home</a></li>
                               <li><a href="about.html">About</a></li>
                               <li><a href="action.html">Precaution</a></li>
                               <li><a href="index.html" class="logo_midle">covido</a></li>
@@ -68,7 +69,7 @@
                                    APPOINMENT
                                  </button>
                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
-                                   <a class="dropdown-item" id="abc" href="#">Covid-Test</a>
+                                   <a class="dropdown-item" id="abc" href="covid.php">Covid-Test</a>
                                    <a class="dropdown-item" id="abc" href="#">Vaccination</a>
                                  </div>
                                </div>

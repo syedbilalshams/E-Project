@@ -36,70 +36,86 @@
             
             <!-- Content Start -->
             <div class="content">
-                <!-- Navbar Start -->
-                <?php include "Side.php"; ?>
+              
 
             <!-- Navbar End -->
             <br>
             <div class="bt">
-
-                <a href="add-user.php" type="button" class="btn btn-primary m-2 ">Add-Hospital</a>
-            </div>
-            <div class="col-12">
-                <?php 
+                <?php
                 include "config.php";
                 $query = "SELECT * FROM `hospital`";
-                $result = mysqli_query($conn,$query);
-                if(mysqli_num_rows($result)>0){
+                $result = mysqli_query($conn, $query);
+                if (mysqli_num_rows($result) > 0) {
 
                 ?>
-                        <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Users</h6>
 
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Username</th>
-                                            <th scope="col">Phone</th>
-                                        </tr>
-                                    </thead>
-                                    <?php
-                                    while($rows = mysqli_fetch_assoc($result)){
+                    <?php
+                    
+                    if ($_SESSION['role'] == 1) {
+                    ?>
+                        <a href="add-user.php" type="button" class="btn btn-primary m-2 ">Add-Hospital</a>
 
-                                    
-                                    ?>
-                                    <tbody>
-                                        <tr>
-                                            <td><?php echo $rows["u_id"]; ?></td>
-                                            <th scope="row"><?php echo $rows["name"]; ?></th>
-                                            <td><?php echo $rows["username"]; ?></td>
-                                            <td><?php echo $rows["phone"]; ?></td>
-                                            <td><?php echo $rows["email"]; ?></td>
-                                            <td><?php if($rows["role"]==1){
-                                               echo "Admin";
-                                            } 
-                                            else{
+                    <?php } ?>
+
+            </div>
+            <div class="col-12">
+
+                <div class="bg-light rounded h-100 p-4">
+                    <h6 class="mb-4">Users</h6>
+
+
+                    <div class="table-responsive">
+                        <table class="table">
+
+                            <thead>
+                                <tr>
+
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Role</th>
+                                    <th scope="col">Update</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+
+                            <?php
+                            while ($rows = mysqli_fetch_assoc($result)) {
+
+
+                            ?>
+
+
+                                <tbody>
+                                    <tr>
+                                        <td><?php echo $rows["u_id"]; ?></td>
+                                        <th scope="row"><?php echo $rows["name"]; ?></th>
+                                        <td><?php echo $rows["username"]; ?></td>
+                                        <td><?php echo $rows["phone"]; ?></td>
+                                        <td><?php echo $rows["email"]; ?></td>
+                                        <td><?php if ($rows["role"] == 1) {
+                                                echo "Admin";
+                                            } else {
                                                 echo "User";
                                             }
                                             ?></td>
-                                            <td><a class="aa" href="update_user.php?id=<?php echo $rows["u_id"]; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                                            <td><a class="aa" href="delete_user.php?id=<?php echo $rows["u_id"]; ?>"><i class="fa-solid fa-xmark"></i></a></td>
-                                        </tr>
+                                        <td><a class="aa" href="update_user.php?id=<?php echo $rows["u_id"]; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                        <td><a class="aa" href="delete_user.php?id=<?php echo $rows["u_id"]; ?>"><i class="fa-solid fa-xmark"></i></a></td>
+                                    </tr>
 
-                                    <?php } ?>    
-                                    </tbody>
-                                </table>
-                                <?php } ?>
-                            </div>
-                        </div>
+                                <?php  } ?>
+                                </tbody>
+                        </table>
+                    <?php } ?>
                     </div>
                 </div>
             </div>
-            
+        </div>
+    </div>
 
+            
             <!-- Footer Start -->
                 <!--  -->
             <!-- Footer End -->

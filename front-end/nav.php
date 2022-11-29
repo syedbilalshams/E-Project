@@ -28,15 +28,15 @@
    <link rel="stylesheet" href="css/owl.carousel.min.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
    <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
-   
+
    <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 </head>
 <style>
-.name{
-   color: white !important;
-}
+   .name {
+      color: white !important;
+   }
 </style>
 <!-- body -->
 
@@ -55,12 +55,13 @@
       <div class="right">
          <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-               <span class="d-none name d-lg-inline-flex"></span>
+
+               <span class="d-none name d-lg-inline-flex"><?php echo $_SESSION['user']; ?></span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                <a href="#" class="dropdown-item">My Profile</a>
                <a href="#" class="dropdown-item">Settings</a>
-               <a href="#" class="dropdown-item">Log Out</a>
+               <a href="logout.php" class="dropdown-item">Log Out</a>
             </div>
          </div>
       </div>

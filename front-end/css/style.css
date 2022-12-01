@@ -199,7 +199,18 @@ img {
 .navbar-form input {
      border: none !important;
 }
-
+.nav{
+    word-spacing: 100px;
+    background-color: black ;
+}
+#abc{
+    color: black;
+}
+.xyz{
+    height: 10vh;
+    width: 10vw;
+    background-color: black;
+}
 .badge {
      font-weight: 500;
 }

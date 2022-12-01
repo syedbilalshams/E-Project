@@ -58,13 +58,18 @@ if(!isset($_SESSION['user'])){
                         ?></span>
                     </div>
                 </div>
+             
                 <div class="navbar-nav w-100">
-                    <a href="index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>INDEX</a>
+                    <a href="index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>USERS</a>
+                    <?php 
+
+if($_SESSION['role'] == 1){
+?>
                     <a href="patient.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>PATIENT</a>
                     <a href="hospital.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>HOSPITAL</a>
                     <a href="post.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>POST</a>
-                    
-                   
+             
+                 <?php } ?>
                     </div>
                 </div>
             </nav>

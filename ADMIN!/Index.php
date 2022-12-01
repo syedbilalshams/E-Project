@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,9 +47,13 @@ session_start();
         <div class="container-fluid pt-4 px-4">
             <div class="row g-4">
                 <div class="col-sm-12  col-xl-8">
+                <?php 
+                if($_SESSION['role'] == 1){
+                    ?>
                     <a type="button" href="add-user.php" class="btn btn-primary m-2">Add-User</a>  
+                <?php } ?>
                     <div class="bg-light all rounded h-100 p-4">
-                        <h6 class="mb-4"></h6>
+                        <h6 class="mb-4">Users</h6>
                         <table class="table">
 
                             <thead>
@@ -62,8 +64,12 @@ session_start();
                                     <th scope="col">Phone</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Role</th>
+                                    <?php 
+                                    if($_SESSION['role'] == 1){
+                                        ?>
                                     <th scope="col">Update</th>
                                     <th scope="col">Delete</th>
+                                    <?php } ?>
                                 </tr>
                             </thead>
                             <?php
@@ -86,8 +92,12 @@ session_start();
                                                 echo "Admin";
                                             }
                                             ?></td>
+                                              <?php 
+                                               if($_SESSION['role'] == 1){
+                                               ?>
                                         <td><a href="update_user.php?id=<?php echo $row["u_id"]; ?>">Update</a></td>
                                         <td><a href="delete_user.php?id=<?php echo $row["u_id"]; ?>">Delete</a></td>
+                                        <?php } ?>
                                     </tr>
                                 </tbody> <?php }
                                     } ?>

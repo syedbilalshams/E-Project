@@ -30,42 +30,46 @@
 </head>
 <body>
      <!-- Sidebar Start -->
-     <?php include "nav.php"; ?>
+     <?php include "nav.php"; 
+     
+     include "config.php";
+     $query = "SELECT * FROM `hospital`";
+     $result = mysqli_query($conn,$query);
+     if(mysqli_num_rows($result)>0){
+
+     
+     
+     ?>
 
      <div class="container-fluid pt-4 px-4">
+         <a type="button" href="add_hospital.php" class="btn btn-primary m-2">Add-Hospital</a>  
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Basic Table</h6>
+                        <h6 class="mb-4">Hospital</h6>
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">First Name</th>
-                                        <th scope="col">Last Name</th>
-                                        <th scope="col">Email</th>
+                                        <th scope="col"> Name</th>
+                                        <th scope="col">City</th>
+                                        <th scope="col">Update</th>
+                                        <th scope="col">Delete</th>
                                     </tr>
                                 </thead>
+                                <?php
+                                while($row = mysqli_fetch_assoc($result)){
+                                ?>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>John</td>
-                                        <td>Doe</td>
-                                        <td>jhon@email.com</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>mark@email.com</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>jacob@email.com</td>
+                                        <th scope="row"><?php echo $row["h_id"] ?></th>
+                                        <td><?php echo $row["name"] ?></td>
+                                        <td><?php echo $row["city"] ?></td>
+                                        <td><a href="">Update</a></td>
+                                        <td><a href="">Delete</a></td>
                                     </tr>
                                 </tbody>
+                                <?php } } ?>
                             </table>
                         </div>
                     </div>

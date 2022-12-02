@@ -1,5 +1,8 @@
 <?php
-session_start()
+include "config.php";
+if(!isset($_SESSION['user'])){
+    header("location:http://localhost/e_project/e-project/admin!/login.php");
+}
 ?>
 <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">

@@ -1,14 +1,11 @@
 <?php 
 ob_start();
 
-<<<<<<< HEAD
-=======
 session_start();
 if(isset($_SESSION['user'])){
     header("location:http://localhost/e_project/e-project/admin!/");
 }
 
->>>>>>> 571d55a1518a5c2a21a54b8bcdfd7c94a6769f1d
 ?>
 <!DOCTYPE html>
 <html lang="en">

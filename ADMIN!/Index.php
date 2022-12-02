@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 <?php 
 
 include "config.php";
@@ -9,16 +10,16 @@ if(isset($_SESSION["name"])){
 }
 ?>
 
+=======
+>>>>>>> 571d55a1518a5c2a21a54b8bcdfd7c94a6769f1d
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>DASHMIN - Bootstrap Admin Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -26,8 +27,13 @@ if(isset($_SESSION["name"])){
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<<<<<<< HEAD
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700w21&display=swap" rel="stylesheet">
     
+=======
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+>>>>>>> 571d55a1518a5c2a21a54b8bcdfd7c94a6769f1d
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -43,120 +49,94 @@ if(isset($_SESSION["name"])){
     <link href="css/style.css" rel="stylesheet">
 </head>
 <style>
-    .aa{
-        margin-left: 20px;
-    }
+
 </style>
+
 <body>
-    <div class="container-xxl position-relative bg-white d-flex p-0">
-        <!-- Spinner Start -->
-        <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div> -->
-        <!-- Spinner End -->
+    <!-- Sidebar Start -->
+    <?php
+    include "nav.php";
+    include "config.php";
+    $query = "SELECT * FROM `user`";
+    $result = mysqli_query($conn, $query);
+    if (mysqli_num_rows($result) > 0) {
+    ?>
 
-
-        <!-- Sidebar Start -->
-            <?php include "nav.php"; ?>
-            <!-- Sidebar End -->
-            
-            
-            <!-- Content Start -->
-            <div class="content">
-                <!-- Navbar Start -->
-                <?php include "Side.php"; ?>
-
-            <!-- Navbar End -->
-            <br>
-            <div class="bt">
-
-                <a href="add-user.php" type="button" class="btn btn-primary m-2 ">Add-User</a>
-            </div>
-            <div class="col-12">
+        <div class="container-fluid pt-4 px-4">
+            <div class="row g-4">
+                <div class="col-sm-12  col-xl-8">
                 <?php 
-                include "config.php";
-                $query = "SELECT * FROM `user`";
-                $result = mysqli_query($conn,$query);
-                if(mysqli_num_rows($result)>0){
+                if($_SESSION['role'] == 1){
+                    ?>
+                    <a type="button" href="add-user.php" class="btn btn-primary m-2">Add-User</a>  
+                <?php } ?>
+                    <div class="bg-light all rounded h-100 p-4">
+                        <h6 class="mb-4">Users</h6>
+                        <table class="table">
 
-                ?>
-                        <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Users</h6>
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Role</th>
+                                    <?php 
+                                    if($_SESSION['role'] == 1){
+                                        ?>
+                                    <th scope="col">Update</th>
+                                    <th scope="col">Delete</th>
+                                    <?php } ?>
+                                </tr>
+                            </thead>
+                            <?php
+                            while ($row = mysqli_fetch_assoc($result)) {
 
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Username</th>
-                                            <th scope="col">Phone</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Role</th>
-                                            <th scope="col">Update</th>
-                                            <th scope="col">Delete</th>
-                                        </tr>
-                                    </thead>
-                                    <?php
-                                    while($rows = mysqli_fetch_assoc($result)){
 
-                                    
-                                    ?>
-                                    <tbody>
-                                        <tr>
-                                            <td><?php echo $rows["u_id"]; ?></td>
-                                            <th scope="row"><?php echo $rows["name"]; ?></th>
-                                            <td><?php echo $rows["username"]; ?></td>
-                                            <td><?php echo $rows["phone"]; ?></td>
-                                            <td><?php echo $rows["email"]; ?></td>
-                                            <td><?php if($rows["role"]==1){
-                                               echo "Admin";
-                                            } 
-                                            else{
-                                                echo "User";
+                            ?>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"><?php echo $row["u_id"]; ?></th>
+                                        <td><?php echo $row["name"]; ?></td>
+                                        <td><?php echo $row["username"]; ?></td>
+                                        <td><?php echo $row["phone"]; ?></td>
+                                        <td><?php echo $row["email"]; ?></td>
+
+                                        <td><?php
+                                            if ($row["role"] == 1) {
+                                                echo "Admin";
+                                            } else {
+                                                echo "Admin";
                                             }
                                             ?></td>
-                                            <td><a class="aa" href="update_user.php?id=<?php echo $rows["u_id"]; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                                            <td><a class="aa" href="delete_user.php?id=<?php echo $rows["u_id"]; ?>"><i class="fa-solid fa-xmark"></i></a></td>
-                                        </tr>
-
-                                    <?php } ?>    
-                                    </tbody>
-                                </table>
-                                <?php } ?>
-                            </div>
-                        </div>
+                                              <?php 
+                                               if($_SESSION['role'] == 1){
+                                               ?>
+                                        <td><a href="update_user.php?id=<?php echo $row["u_id"]; ?>">Update</a></td>
+                                        <td><a href="delete_user.php?id=<?php echo $row["u_id"]; ?>">Delete</a></td>
+                                        <?php } ?>
+                                    </tr>
+                                </tbody> <?php }
+                                    } ?>
+                        </table>
                     </div>
-                </div>
-            </div>
-            
-
-            <!-- Footer Start -->
-                <!--  -->
-            <!-- Footer End -->
-        </div>
-        <!-- Content End -->
+                </div> <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-    </div>
+                <!-- JavaScript Libraries -->
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+                <script src="lib/chart/chart.min.js"></script>
+                <script src="lib/easing/easing.min.js"></script>
+                <script src="lib/waypoints/waypoints.min.js"></script>
+                <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+                <script src="lib/tempusdominus/js/moment.min.js"></script>
+                <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+                <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/chart/chart.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+                <!-- Template Javascript -->
+                <script src="js/main.js"></script>
 </body>
 
 </html>

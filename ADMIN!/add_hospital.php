@@ -44,18 +44,14 @@ ob_start();
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 80vh;
+        height: 50vh;
+        width: 80vh;
     }
 
     .user {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-    }
-
-    .option {
-        width: 38.5vw;
-        background-color: white;
     }
 </style>
 
@@ -64,9 +60,9 @@ ob_start();
         <div class="all">
             <div class="bg-light rounded h-100 p-4">
 
-                <h6 class="mb-4">Add User</h6>
+                <h6 class="mb-4">Add Hospital</h6>
 
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
@@ -74,9 +70,9 @@ ob_start();
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Username</label>
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">City</label>
                         <div class="col-sm-10">
-                            <input type="text" name="user" class="form-control" id="inputEmail3">
+                            <input type="text" name="city" class="form-control" id="inputPassword3">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -85,51 +81,42 @@ ob_start();
                             <input type="password" name="password" class="form-control" id="inputPassword3">
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <label for="inputPassword3" class="col-sm-2 col-form-label">Phone</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="phone" class="form-control" id="inputPassword3">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
-                            <input type="email" name="email" class="form-control" id="inputEmail3">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Product image</label>
-                            <input type="file" name="fileToUpload" required>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                    <div class="form-group user">
-                        <label>User Role</label>
-                        <select class="form-control option" name="role">
-                            <option value="0">Normal User</option>
-                            <option value="1">Admin</option>
-                        </select>
+                    <div class="form-group">
+                          <label for="exampleInputPassword1">Vaccine</label>
+                          <select name="vaccine" class="form-control">
+                              <option value="" disabled> Select Vaccine</option>
+                              <?php 
+                             include "config.php";
+                             $query = "SELECT * FROM `vaccine` ";
+                             $result = mysqli_query($conn,$query);
 
-                    </div>
-                    </div>
-                    
-                    <button type="submit" name="submit" class="btn btn-primary">Add-User</button>
+                             if(mysqli_num_rows($result)>0){
+                                 while($rows = mysqli_fetch_assoc($result)){
+                                     echo "<option value='{$rows["name"]}'>{$rows["name"]}</option>";
+                                 }
+                             }
+                              
+                              
+                              ?>
+                          </select>
+                      </div>
+                    <button type="submit" name="submit" class="btn btn-primary">Add-Hospital</button>
                 </form>
                 <?php
-                if (isset($_POST["submit"])) {
-                    $name = $_POST["name"];
-                    $user = $_POST["user"];
-                    $password = $_POST["password"];
-                    $phone = $_POST["phone"];
-                    $email = $_POST["email"];
-                    $role = $_POST["role"];
 
+                if (isset($_POST["submit"])) {
                     include "config.php";
-                    $query = "INSERT INTO `user`( `name`, `username`, `password`, `phone`, `email`, `role`) VALUES ('{$name}','{$user}','{$password}','{$phone}','{$email}','{$role}')";
+
+                    $name = $_POST["name"];
+                    $city = $_POST["city"];
+                    $vaccine = $_POST["vaccine"];
+                    $password = $_POST["password"];
+                    $query =  "INSERT INTO `hospital`( `name`, `city`, `password`, `vaccine`) VALUES ('{$name}','{$city}','{$password}','{$vaccine}')";
                     mysqli_query($conn, $query);
-                    header("location:http://localhost/e_project/e-project/admin!/index.php");
+
+                    header("location:http://localhost/e_project/e-project/admin!/hospital.php");
                 }
+
                 ?>
             </div>
         </div>

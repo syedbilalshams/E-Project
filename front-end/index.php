@@ -30,6 +30,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
    </head>
    <!-- body -->
+<<<<<<< HEAD:front-end/index.html
    <body class="main-layout">
       <!-- loader  -->
       <div class="loader_bg">
@@ -84,6 +85,9 @@
                </div>
             </div>
          </header>
+=======
+   <?php include "nav.php"; ?>
+>>>>>>> 1ad26dba8c32624edb385e1697456d45af419545:front-end/index.php
       <!-- end header -->
             <div class="full_bg">
       <!-- header inner -->

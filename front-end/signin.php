@@ -65,41 +65,32 @@ if(isset($_SESSION['user'])){
                         <form method="POST">
 
                             <div class="form-floating mb-3">
-                                <input type="text" name="user" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                <label for="floatingInput">Username</label>
+                                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                <label for="floatingInput">email</label>
                             </div>
                             <div class="form-floating mb-4">
                                 <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
                                 <label for="floatingPassword">Password</label>
                             </div>
-                        <div class="d-flex align-items-center justify-content-between mb-4">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                            <a href="hos_login.php">Login as Hospital</a>
-                        </div>
                         <button type="submit" name="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
                         <p class="text-center mb-0">Don't have an Account? <a href="">Sign Up</a></p>
                     </form>
 
                     <?php
                     if(isset($_POST["submit"])){
-                        $user = $_POST["user"];
+                        $email = $_POST["email"];
                         $password = $_POST["password"];
 
                         include "config.php";
-                        $query = "SELECT `u_id`,`username`,`role`,`image` FROM `user` WHERE `username`='{$user}' AND `password`='{$password}'";
+                        $query = "SELECT `w_id`,`name`,`email` FROM `p_user` WHERE `email`='{$email}' AND `password`='{$password}'";
                         $result = mysqli_query($conn,$query);
                         if(mysqli_num_rows($result)>0){
                             while($row = mysqli_fetch_assoc($result)){
                             session_start();
-                            $_SESSION['u_id']=  $row['u_id'];
-                            $_SESSION['user']= $row['username'];
-                            $_SESSION['image']= $row['image'];
-                        
-                            $_SESSION['role']=$row['role'];
-                            header("location:http://localhost/e_project/e-project/admin!/index.php");
+                            $_SESSION['w_id']=  $row['w_id'];
+                            $_SESSION['name']= $row['name'];
+                            $_SESSION['email']= $row['email'];
+                            header("location:http://localhost/e_project/e-project/front-end/index.php");
                            }
                         }
                         else{

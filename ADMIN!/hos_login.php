@@ -65,7 +65,7 @@ if(isset($_SESSION['user'])){
                         <form method="POST">
 
                             <div class="form-floating mb-3">
-                                <input type="text" name="user" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                <input type="text" name="hosptal" class="form-control" id="floatingInput" placeholder="name@example.com">
                                 <label for="floatingInput">Username</label>
                             </div>
                             <div class="form-floating mb-4">
@@ -77,7 +77,7 @@ if(isset($_SESSION['user'])){
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
                             </div>
-                            <a href="hos_login.php">Login as Hospital</a>
+                            <a href="login.php">Login as user</a>
                         </div>
                         <button type="submit" name="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
                         <p class="text-center mb-0">Don't have an Account? <a href="">Sign Up</a></p>
@@ -85,20 +85,19 @@ if(isset($_SESSION['user'])){
 
                     <?php
                     if(isset($_POST["submit"])){
-                        $user = $_POST["user"];
+                        $user = $_POST["hospital"];
                         $password = $_POST["password"];
 
                         include "config.php";
-                        $query = "SELECT `u_id`,`username`,`role`,`image` FROM `user` WHERE `username`='{$user}' AND `password`='{$password}'";
+                        $query = "SELECT `h_id`,`name`, FROM `hospital` WHERE `name`='{$user}' AND `password`='{$password}'";
                         $result = mysqli_query($conn,$query);
                         if(mysqli_num_rows($result)>0){
                             while($row = mysqli_fetch_assoc($result)){
                             session_start();
-                            $_SESSION['u_id']=  $row['u_id'];
-                            $_SESSION['user']= $row['username'];
-                            $_SESSION['image']= $row['image'];
+                            $_SESSION['h_id']=  $row['h_id'];
+                            $_SESSION['hospital']= $row['name'];
                         
-                            $_SESSION['role']=$row['role'];
+                        
                             header("location:http://localhost/e_project/e-project/admin!/");
                            }
                         }

@@ -33,7 +33,9 @@
      <?php include "nav.php"; 
      
      include "config.php";
-     $query = "SELECT * FROM `hospital`";
+     $query = "SELECT vaccine.v_id, hospital.vaccine, hospital.name
+     FROM hospital
+     INNER JOIN vaccine ON hospital.vaccine=vaccine.name";
      $result = mysqli_query($conn,$query);
      if(mysqli_num_rows($result)>0){
 
@@ -52,8 +54,7 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col"> Name</th>
-                                        <th scope="col">City</th>
-                                        <th scope="col">Vaccine</th>
+                                        <th scope="col">Hospital</th>
                                         <th scope="col">Update</th>
                                         <th scope="col">Delete</th>
                                     </tr>
@@ -63,10 +64,9 @@
                                 ?>
                                 <tbody>
                                     <tr>
-                                        <th scope="row"><?php echo $row["h_id"] ?></th>
-                                        <td><?php echo $row["name"] ?></td>
-                                        <td><?php echo $row["city"] ?></td>
+                                        <th scope="row"><?php echo $row["v_id"] ?></th>
                                         <td><?php echo $row["vaccine"] ?></td>
+                                        <td><?php echo $row["name"] ?></td>
                                         <td><a href="">Update</a></td>
                                         <td><a href="">Delete</a></td>
                                     </tr>

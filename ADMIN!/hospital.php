@@ -35,7 +35,7 @@
     <?php include "nav.php";
 
     include "config.php";
-    $query = "SELECT * FROM `hospital`";
+    $query = "SELECT DISTINCT name , h_id ,city FROM hospital;";
     $result = mysqli_query($conn, $query);
 
 

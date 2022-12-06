@@ -115,7 +115,7 @@ if(mysqli_num_rows($result)>0){
                             <option value="1">Admin</option>
                         </select>
                     </div>
-                                <button type="submit" name="submit" class="btn btn-primary">Add-User</button>
+                                <button type="submit" name="submit" class="btn btn-primary">Update</button>
                             <?php  } ?>
                             </form>
                             <?php } ?>

@@ -81,12 +81,25 @@ ob_start();
                             <input type="password" name="password" class="form-control" id="inputPassword3">
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <label for="inputPassword3" class="col-sm-2 col-form-label">Vaccine</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="vaccine" class="form-control" id="inputPassword3">
-                        </div>
-                    </div>
+                    <div class="form-group">
+                          <label for="exampleInputPassword1">Vaccine</label>
+                          <select name="vaccine" class="form-control">
+                              <option value="" disabled> Select Vaccine</option>
+                              <?php 
+                             include "config.php";
+                             $query = "SELECT * FROM `vaccine` ";
+                             $result = mysqli_query($conn,$query);
+
+                             if(mysqli_num_rows($result)>0){
+                                 while($rows = mysqli_fetch_assoc($result)){
+                                     echo "<option value='{$rows["name"]}'>{$rows["name"]}</option>";
+                                 }
+                             }
+                              
+                              
+                              ?>
+                          </select>
+                      </div>
                     <button type="submit" name="submit" class="btn btn-primary">Add-Hospital</button>
                 </form>
                 <?php

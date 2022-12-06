@@ -30,7 +30,64 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
    </head>
    <!-- body -->
+<<<<<<< HEAD:front-end/index.html
+   <body class="main-layout">
+      <!-- loader  -->
+      <div class="loader_bg">
+         <div class="loader"><img src="images/loading.gif" alt="#"/></div>
+      </div>
+      <!-- end loader -->
+      <!-- top -->
+                    <!-- header -->
+         <header class="header-area">
+            <div class="left">
+               <a href="Javascript:void(0)"><i class="fa fa-search" aria-hidden="true"></i></a>
+            </div>
+            <div class="right">
+               <a href="Javascript:void(0)"><i class="fa fa-user" aria-hidden="true"></i></a>
+            </div>
+            <div class="container">
+               <div class="row d_flex">
+                  <div class="col-sm-3 logo_sm">
+                     <div class="logo">
+                        <a href="index.html"></a>
+                     </div>
+                  </div>
+                  <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-9">
+                     <div class="navbar-area">
+                        <nav class="site-navbar">
+                           <ul>
+                              <li><a class="active" href="index.html">Home</a></li>
+                              <li><a href="about.html">About</a></li>
+                              <li><a href="action.html">take action</a></li>
+                              <li><a href="index.html" class="logo_midle">covido</a></li>
+                              <li><a href="news.html">news</a></li>
+                              <li class="nav-item dropdown">
+                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" >
+                                   Appointments
+                                 </a>
+                                 <div class="dropdown-menu" style="background-color: red;" >
+                                   <a class="dropdown-item" href="#">Action</a>
+                                   <a class="dropdown-item" href="#">Another action</a>
+                                   
+                                   <a class="dropdown-item" href="#">Something else here</a>
+                                 </div>
+                               </li>
+                               
+                              <li><a href="contact.html">Contact </a></li>
+                           </ul>
+                           <button class="nav-toggler">
+                           <span></span>
+                           </button>
+                        </nav>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </header>
+=======
    <?php include "nav.php"; ?>
+>>>>>>> 1ad26dba8c32624edb385e1697456d45af419545:front-end/index.php
       <!-- end header -->
             <div class="full_bg">
       <!-- header inner -->

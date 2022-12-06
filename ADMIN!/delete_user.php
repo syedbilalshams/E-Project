@@ -1,6 +1,6 @@
 <?php
 
-$id = $_GET["id"];
+$id = $_GET["u_id"];
 
 include "config.php";
 $query = "DELETE FROM `user` WHERE `u_id`='{$id}'";

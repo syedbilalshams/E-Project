@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2022 at 04:48 PM
+-- Generation Time: Dec 06, 2022 at 08:18 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `corona`
+-- Database: `corona1`
 --
 
 -- --------------------------------------------------------
@@ -30,17 +30,18 @@ SET time_zone = "+00:00";
 CREATE TABLE `hospital` (
   `h_id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `city` varchar(100) NOT NULL
+  `city` varchar(100) NOT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  `vaccine` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `hospital`
 --
 
-INSERT INTO `hospital` (`h_id`, `name`, `city`) VALUES
-(1, 'Zia-Uddin', 'Karachi'),
-(2, 'Agha Khan', 'Karachi'),
-(3, 'Saifee', 'lahore');
+INSERT INTO `hospital` (`h_id`, `name`, `city`, `password`, `vaccine`) VALUES
+(11, 'Ziauddin', 'karachi', '123', 'pfizer'),
+(12, 'Saifee', 'lahore', '123', 'moderna');
 
 -- --------------------------------------------------------
 
@@ -80,7 +81,10 @@ CREATE TABLE `p_user` (
 --
 
 INSERT INTO `p_user` (`w_id`, `name`, `email`, `password`) VALUES
-(2, 'usman shams', 'usmanshams31@gmail.com', 123);
+(2, 'usman shams', 'usmanshams31@gmail.com', 123),
+(3, 'BILAL SHAMS', 'BILALSHAMS967@GMAIL.COM', 123),
+(4, 'ashraf', 'extra@gmail.com', 123),
+(5, 'yahya', 'yahya@gmail.com1', 123);
 
 -- --------------------------------------------------------
 
@@ -104,9 +108,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`u_id`, `name`, `username`, `password`, `phone`, `email`, `role`, `image`) VALUES
-(12, 'sudais ladhani', 'sudais', '123', 2147483647, 'sfedas@gmail.com', '0', 'product7.jpg'),
 (15, 'usman shams', 'usman', '123', 2147483647, 'werfwef@gmail.com', '1', 'product6.jpg'),
-(16, 'bilal shams', 'bilal', '123', 2147483647, 'tooba@gmail.com', '0', 'testimonial-2.jpg');
+(16, 'bilal shams', 'bilal1', '123', 2147483647, 'tooba@gmail.com', '0', 'testimonial-2.jpg'),
+(17, 'sameer ghori', 'sameer', '123', 2147483647, 'sameer@gmail.com', '0', NULL);
 
 -- --------------------------------------------------------
 
@@ -162,7 +166,7 @@ ALTER TABLE `vaccine`
 -- AUTO_INCREMENT for table `hospital`
 --
 ALTER TABLE `hospital`
-  MODIFY `h_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `h_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `patient`
@@ -174,13 +178,13 @@ ALTER TABLE `patient`
 -- AUTO_INCREMENT for table `p_user`
 --
 ALTER TABLE `p_user`
-  MODIFY `w_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `w_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `vaccine`

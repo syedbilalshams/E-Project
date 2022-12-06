@@ -44,7 +44,7 @@ ob_start();
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 70vh;
+        height: 80vh;
     }
 
     .user {
@@ -53,6 +53,10 @@ ob_start();
         justify-content: space-between;
     }
 
+    .option {
+        width: 38.5vw;
+        background-color: white;
+    }
 </style>
 
 <body>
@@ -62,7 +66,7 @@ ob_start();
 
                 <h6 class="mb-4">Add User</h6>
 
-                <form method="POST" enctype="multipart/form-data" >
+                <form method="POST">
                     <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
@@ -95,78 +99,37 @@ ob_start();
                     </div>
                     <div class="row mb-3">
                         <div class="form-group">
-                            <label>User Role</label>
-                            <select class="form-control" name="role">
-                                <option value="0">Normal User</option>
-                                <option value="1">Admin</option>
-                            </select>
+                            <label for="exampleInputPassword1">Product image</label>
+                            <input type="file" name="fileToUpload" required>
                         </div>
                     </div>
+                    <div class="row mb-3">
                     <div class="form-group user">
-                        <label for="exampleInputPassword1">Product image</label>
-                        <input type="file" name="fileToUpload" required>
+                        <label>User Role</label>
+                        <select class="form-control option" name="role">
+                            <option value="0">Normal User</option>
+                            <option value="1">Admin</option>
+                        </select>
+
                     </div>
+                    </div>
+                    
                     <button type="submit" name="submit" class="btn btn-primary">Add-User</button>
                 </form>
                 <?php
-                if(isset($_FILES["fileToUpload"]))
-                {
-                    $error = array();
-                    
-                    $file_name = $_FILES["fileToUpload"]["name"];
-                    $file_size = $_FILES["fileToUpload"]["size"];
-                    $file_type = $_FILES["fileToUpload"]["type"];
-                    $file_temp = $_FILES["fileToUpload"]["tmp_name"];
-                    $file_ext  = explode(".",$file_name);
-                    $file_ext = end($file_ext);
-                    $file_ext = strtolower($file_ext);
-                    $extension = array("jpg","jpeg","png");
-                    
-                
-                    if(in_array($file_ext,$extension) === false)
-                    {
-                        $error = "extension must be png , jpg , jpeg";
-                    }
-                    if($file_size > 2097152)
-                    {
-                        $error = "file size must be less than 2 mb";
-                    }
-                    if(empty($error)== true)
-                    {
-                        move_uploaded_file($file_temp,"upload/".$file_name);
-                    }
-                    else
-                    {
-                        print_r($error);
-                      
-                
-                    }
-                
-                }
+                if (isset($_POST["submit"])) {
+                    $name = $_POST["name"];
+                    $user = $_POST["user"];
+                    $password = $_POST["password"];
+                    $phone = $_POST["phone"];
+                    $email = $_POST["email"];
+                    $role = $_POST["role"];
 
-                
-                if(isset($_POST["submit"]))
-                {
                     include "config.php";
-                
-                    $user_name = $_POST["name"];
-                    $user_phone = $_POST["phone"];
-                    $username = $_POST["user"];
-                    $user_email = $_POST["email"];
-                    $user_password = $_POST["password"];
-                    $user_role = $_POST["role"];
-                    
-                    
-                
-                    $query =  "INSERT INTO `user`( `name`, `phone`, `username`, `email`, `password`, `role`, `image`) VALUES ('{$user_name}','{$user_phone}','{$username}','{$user_email}','{$user_password}','{$user_role}','{$file_name}')";
-                
-                    mysqli_query($conn,$query);
-                
+                    $query = "INSERT INTO `user`( `name`, `username`, `password`, `phone`, `email`, `role`) VALUES ('{$name}','{$user}','{$password}','{$phone}','{$email}','{$role}')";
+                    mysqli_query($conn, $query);
                     header("location:http://localhost/e_project/e-project/admin!/index.php");
-                
-                
                 }
-                
                 ?>
             </div>
         </div>

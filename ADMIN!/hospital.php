@@ -31,101 +31,48 @@
 <body>
      <!-- Sidebar Start -->
      <?php include "nav.php"; ?>
-            <!-- Sidebar End -->
-            
-            
-            <!-- Content Start -->
-            <div class="content">
-              
 
-            <!-- Navbar End -->
-            <br>
-            <div class="bt">
-                <?php
-                include "config.php";
-                $query = "SELECT * FROM `hospital`";
-                $result = mysqli_query($conn, $query);
-                if (mysqli_num_rows($result) > 0) {
-
-                ?>
-
-                    <?php
-                    
-                    if ($_SESSION['role'] == 1) {
-                    ?>
-                        <a href="add-user.php" type="button" class="btn btn-primary m-2 ">Add-Hospital</a>
-
-                    <?php } ?>
-
-            </div>
-            <div class="col-12">
-
-                <div class="bg-light rounded h-100 p-4">
-                    <h6 class="mb-4">Users</h6>
-
-
-                    <div class="table-responsive">
-                        <table class="table">
-
-                            <thead>
-                                <tr>
-
-                                    <th scope="col">#</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Username</th>
-                                    <th scope="col">Phone</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Role</th>
-                                    <th scope="col">Update</th>
-                                    <th scope="col">Delete</th>
-                                </tr>
-                            </thead>
-
-                            <?php
-                            while ($rows = mysqli_fetch_assoc($result)) {
-
-
-                            ?>
-
-
+     <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Basic Table</h6>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">First Name</th>
+                                        <th scope="col">Last Name</th>
+                                        <th scope="col">Email</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     <tr>
-                                        <td><?php echo $rows["u_id"]; ?></td>
-                                        <th scope="row"><?php echo $rows["name"]; ?></th>
-                                        <td><?php echo $rows["username"]; ?></td>
-                                        <td><?php echo $rows["phone"]; ?></td>
-                                        <td><?php echo $rows["email"]; ?></td>
-                                        <td><?php if ($rows["role"] == 1) {
-                                                echo "Admin";
-                                            } else {
-                                                echo "User";
-                                            }
-                                            ?></td>
-                                        <td><a class="aa" href="update_user.php?id=<?php echo $rows["u_id"]; ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                                        <td><a class="aa" href="delete_user.php?id=<?php echo $rows["u_id"]; ?>"><i class="fa-solid fa-xmark"></i></a></td>
+                                        <th scope="row">1</th>
+                                        <td>John</td>
+                                        <td>Doe</td>
+                                        <td>jhon@email.com</td>
                                     </tr>
-
-                                <?php  } ?>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>mark@email.com</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>jacob@email.com</td>
+                                    </tr>
                                 </tbody>
-                        </table>
-                    <?php } ?>
+                            </table>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-            
-            <!-- Footer Start -->
-                <!--  -->
-            <!-- Footer End -->
-        </div>
-        <!-- Content End -->
 
 
-        <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-    </div>
+  
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

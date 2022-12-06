@@ -1,12 +1,4 @@
-<?php 
-ob_start();
 
-session_start();
-if(isset($_SESSION['user'])){
-    header("location:http://localhost/e_project/e-project/admin!/");
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,7 +69,7 @@ if(isset($_SESSION['user'])){
                                 <label for="floatingPassword">Password</label>
                             </div>
                         <button type="submit" name="submit" class="btn btn-primary py-3 w-100 mb-4">Sign Up</button>
-                        <p class="text-center mb-0">Don't have an Account? <a href="signin.php">Sign In</a></p>
+                        <p class="text-center mb-0">Already Have an Account? <a href="signin.php">Sign In</a></p>
                     </form>
 
                     <?php
@@ -89,7 +81,7 @@ if(isset($_SESSION['user'])){
                         include "config.php";
                         $query = "INSERT INTO `p_user`( `name`, `email`, `password`) VALUES ('{$name}','{$email}','{$password}')";
                         mysqli_query($conn,$query);
-                        header("location:http://localhost/e_project/e-project/front-end/");
+                        header("location:http://localhost/e_project/e-project/front-end/signin.php");
                     }
                     ?>
 

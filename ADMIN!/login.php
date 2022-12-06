@@ -80,7 +80,7 @@ if(isset($_SESSION['user'])){
                             <a href="hos_login.php">Login as Hospital</a>
                         </div>
                         <button type="submit" name="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
-                        <p class="text-center mb-0">Don't have an Account? <a href="">Sign Up</a></p>
+                     
                     </form>
 
                     <?php

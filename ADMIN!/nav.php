@@ -1,7 +1,7 @@
 <?php
 include "config.php";
 session_start();
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user']) ) {
     header("location:http://localhost/e_project/e-project/admin!/login.php");
 }
 ?>

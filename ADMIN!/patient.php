@@ -39,7 +39,7 @@
     <?php
     include "nav.php";
     include "config.php";
-    $query = "SELECT * FROM `user`";
+    $query = "SELECT * FROM `p_user`";
     $result = mysqli_query($conn, $query);
     if (mysqli_num_rows($result) > 0) {
     ?>
@@ -48,27 +48,17 @@
             <?php 
                 if($_SESSION['role'] == 1){
                     ?>
-                    <a type="button" href="add-user.php" class="btn add btn-primary m-2">Add-User</a>  
                     <?php } ?>
-                    <div class="row g-4 ">
+                    <div class="row g-2 ">
                     <div class="bg-light all rounded h-100 p-4">
-                        <h6 class="mb-4">Users</h6>
+                        <h6 class="mb-4">Patients</h6>
                         <table class="table">
 
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Username</th>
-                                    <th scope="col">Phone</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Role</th>
-                                    <?php 
-                                    if($_SESSION['role'] == 1){
-                                        ?>
-                                    <th scope="col">Update</th>
-                                    <th scope="col">Delete</th>
-                                    <?php } ?>
+                                    <th scope="col">email</th>
                                 </tr>
                             </thead>
                             <?php
@@ -78,28 +68,14 @@
                             ?>
                                 <tbody>
                                     <tr>
-                                        <th scope="row"><?php echo $row["u_id"]; ?></th>
+                                        <th scope="row"><?php echo $row["w_id"]; ?></th>
                                         <td><?php echo $row["name"]; ?></td>
-                                        <td><?php echo $row["username"]; ?></td>
-                                        <td><?php echo $row["phone"]; ?></td>
                                         <td><?php echo $row["email"]; ?></td>
 
-                                        <td><?php
-                                            if ($row["role"] == 1) {
-                                                echo "Admin";
-                                            } else {
-                                                echo "Admin";
-                                            }
-                                            ?></td>
-                                              <?php 
-                                               if($_SESSION['role'] == 1){
-                                               ?>
-                                        <td><a href="update_user.php?id=<?php echo $row["u_id"]; ?>">Update</a></td>
-                                        <td><a href="delete_user.php?id=<?php echo $row["u_id"]; ?>">Delete</a></td>
+                                              
                                         <?php } ?>
                                     </tr>
-                                </tbody> <?php }
-                                    } ?>
+                                </tbody> <?php } ?>
                         </table>
                     </div>
                 </div> <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

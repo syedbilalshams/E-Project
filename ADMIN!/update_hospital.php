@@ -44,8 +44,8 @@ ob_start();
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 50vh;
-        width: 80vh;
+        height: 40vh;
+        width: 40vw;
     }
 
     .user {
@@ -53,61 +53,67 @@ ob_start();
         flex-direction: row;
         justify-content: space-between;
     }
+
+    .option {
+        width: 38.5vw;
+        background-color: white;
+    }
 </style>
 
 <body>
     <div class="col-sm-12 col-xl-6"><br><br><br>
-        <div class="all">
-            <div class="bg-light rounded h-100 p-4">
+        <?php
 
-                <h6 class="mb-4">Add Hospital</h6>
+        $id = $_GET["id"];
 
+        include "config.php";
+        $query = "SELECT * FROM `hospital` WHERE `h_id` = '{$id}'";
+        $result = mysqli_query($conn, $query);
+        if (mysqli_num_rows($result) > 0) {
+
+        ?>
+            <div class="all">
+                <div class="bg-light   rounded h-100 p-4">
+
+                    <h6 class="mb-4">Add User</h6>
+                    <?php
+                    while ($row = mysqli_fetch_assoc($result)) {
+
+
+                    ?>
+                       
                 <form method="POST" enctype="multipart/form-data">
                     <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
-                            <input type="text" name="name" class="form-control" id="inputEmail3">
+                            <input type="text" name="name" class="form-control" id="inputEmail3" placeholder="<?php echo $row["name"]; ?>">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputPassword3" class="col-sm-2 col-form-label">City</label>
                         <div class="col-sm-10">
-                            <input type="text" name="city" class="form-control" id="inputPassword3">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-                        <div class="col-sm-10">
-                            <input type="password" name="password" class="form-control" id="inputPassword3">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="inputPassword3" class="col-sm-2 col-form-label">Vaccine</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="vaccine" class="form-control" id="inputPassword3">
+                            <input type="text" name="city" class="form-control" id="inputPassword3" placeholder="<?php echo $row["city"]; ?>">
                         </div>
                     </div>
                     <button type="submit" name="submit" class="btn btn-primary">Add-Hospital</button>
-                </form>
-                <?php
+                </form>     
+                <?php } } ?>
+                                </div>
+                                <?php
+                                if (isset($_POST["submit"])) {
+                                    $id = $_GET["id"];
+                                    $name = $_POST["name"];
+                                    $city = $_POST["city"];
 
-                if (isset($_POST["submit"])) {
-                    include "config.php";
+                                    include "config.php";
+                                    $query = "UPDATE `hospital` SET `name`='{$name}',`city`='{$city}' WHERE `h_id` = '{$id}'";
+                                    mysqli_query($conn, $query);
 
-                    $name = $_POST["name"];
-                    $city = $_POST["city"];
-                    $vaccine = $_POST["vaccine"];
-                    $password = $_POST["password"];
-                    $query =  "INSERT INTO `hospital`( `name`, `city`, `password`, `vaccine`) VALUES ('{$name}','{$city}','{$password}','{$vaccine}')";
-                    mysqli_query($conn, $query);
-
-                    header("location:http://localhost/e_project/e-project/admin!/hospital.php");
-                }
-
-                ?>
-            </div>
-        </div>
-    </div>
+                                    header("location:http://localhost/e_project/e-project/admin!/hospital.php");
+                                }
+                                ?>
+                            </div>
+                        </div>
 </body>
 
 </html>

@@ -17,20 +17,11 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Sno.</th>
                             <th>Name</th>
-                            <th>Mobile No.</th>
-                            <th>Address</th>
+                            <th>city</th>
+                            <th>Phone</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>Sno.</th>
-                            <th>Name</th>
-                            <th>Mobile No.</th>
-                            <th>Address</th>
-                        </tr>
-                    </tfoot>
                     <tbody>
                         <?php
                         include "config.php";
@@ -41,16 +32,13 @@
 
                             <tr>
                                 <td>
-                                    <?php echo $cnt++; ?>
+                                    <?php echo $row['name']; ?>
                                 </td>
                                 <td>
-                                    <?php echo $row['hname']; ?>
+                                    <?php echo $row['city']; ?>
                                 </td>
                                 <td>
-                                    <?php echo $row['hphone']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $row['haddress']; ?>
+                                    <?php echo $row['phone']; ?>
                                 </td>
                             </tr>
                         <?php } ?>

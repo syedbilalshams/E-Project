@@ -17,16 +17,10 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Sno.</th>
                             <th>Vaccine</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>Sno.</th>
-                            <th>Vaccine</th>
-                        </tr>
-                    </tfoot>
+                  
                     <tbody>
                         <?php
                         include "config.php";
@@ -37,10 +31,7 @@
 
                         <tr>
                             <td>
-                                <?php echo $cnt++; ?>
-                            </td>
-                            <td>
-                                <?php echo $row['vaccine']; ?>
+                                <?php echo $row['name']; ?>
                             </td>
                         </tr>
                         <?php } ?>

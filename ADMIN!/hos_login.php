@@ -62,13 +62,8 @@ ob_start();
                         <form method="POST">
 
                             <div class="form-floating mb-3">
-<<<<<<< HEAD
-                                <input type="text" name="user" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                <input type="text" name="hospital" class="form-control" id="floatingInput" placeholder="name@example.com">
                                 <label for="floatingInput">Name</label>
-=======
-                                <input type="text" name="hosptal" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                <label for="floatingInput">Username</label>
->>>>>>> 82a723c64b1ed22cc8a3d5f1dbf4b13076e51632
                             </div>
                             <div class="form-floating mb-4">
                                 <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
@@ -79,11 +74,7 @@ ob_start();
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
                             </div>
-<<<<<<< HEAD
                             <a href="login.php">Login as User</a>
-=======
-                            <a href="login.php">Login as user</a>
->>>>>>> 82a723c64b1ed22cc8a3d5f1dbf4b13076e51632
                         </div>
                         <button type="submit" name="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
                     </form>
@@ -94,28 +85,16 @@ ob_start();
                         $password = $_POST["password"];
 
                         include "config.php";
-<<<<<<< HEAD
                         $query = "SELECT `h_id`,`name`,`city` FROM `hospital` WHERE `name`='{$user}' AND `password`='{$password}'";
                         $result = mysqli_query($conn,$query);
                         if(mysqli_num_rows($result)>0){
                             while($row = mysqli_fetch_assoc($result)){
                             
-                            // $_SESSION['h_id']=  $row['h_id'];
-                            // echo $_SESSION['name']= $row['name'];
-                            // $_SESSION['city']= $row['city'];
-                            // header("location:http://localhost/e_project/e-project/admin!/");
-=======
-                        $query = "SELECT `h_id`,`name`, FROM `hospital` WHERE `name`='{$user}' AND `password`='{$password}'";
-                        $result = mysqli_query($conn,$query);
-                        if(mysqli_num_rows($result)>0){
-                            while($row = mysqli_fetch_assoc($result)){
-                            session_start();
                             $_SESSION['h_id']=  $row['h_id'];
-                            $_SESSION['hospital']= $row['name'];
-                        
-                        
+                            $_SESSION['user']= $row['name'];
+                            $_SESSION['city']= $row['city'];
+                        //    print_r($_SESSION); 
                             header("location:http://localhost/e_project/e-project/admin!/");
->>>>>>> 82a723c64b1ed22cc8a3d5f1dbf4b13076e51632
                            }
                         }
                         else{

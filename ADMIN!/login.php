@@ -96,6 +96,7 @@ if(isset($_SESSION['user'])){
                             session_start();
                             $_SESSION['u_id']=  $row['u_id'];
                             $_SESSION['user']= $row['username'];
+                            $_SESSION['panel']= "admin";
                             $_SESSION['image']= $row['image'];
                         
                             $_SESSION['role']=$row['role'];

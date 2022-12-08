@@ -1,7 +1,10 @@
 <?php 
 ob_start();
 
-
+session_start();
+if(isset($_SESSION['user'])){
+    header("location:http://localhost/e_project/e-project/admin!/");
+}
 
 ?>
 <!DOCTYPE html>
@@ -92,6 +95,7 @@ ob_start();
                             
                             $_SESSION['h_id']=  $row['h_id'];
                             $_SESSION['user']= $row['name'];
+                            $_SESSION['panel']= "hospital";
                             $_SESSION['city']= $row['city'];
                         //    print_r($_SESSION); 
                             header("location:http://localhost/e_project/e-project/admin!/");

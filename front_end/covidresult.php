@@ -15,7 +15,7 @@
                             <label>Search By Cnic No.</label>
                             <input type="text" class="form-control" id="searchdata" name="searchdata" required="true"
                                 placeholder="Enter Cnic No.">
-                                <a href="vac_cer.php">Search Vaccination Certificate</a>
+                                <a href="vac_cer.php">Search Vaccination Details</a>
                         </div>
 
 
@@ -40,8 +40,8 @@
 
      ?>
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Test Details#
-        <?php echo $row['name']; ?>
+    <h1 class="h3 mb-4 text-gray-800">
+        <?php echo $row['name']; ?>'s Test Details
     </h1>
     <div class="row">
         <!-- personal information --->

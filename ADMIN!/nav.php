@@ -1,6 +1,6 @@
 <?php
 
-    session_start();
+session_start();
 
 if (!isset($_SESSION['user'])) {
     header("location:http://localhost/e_project/e-project/admin!/login.php");
@@ -54,30 +54,28 @@ if (!isset($_SESSION['user'])) {
 
                     ?>
                         <img class="rounded-circle" src="upload/<?php echo $_SESSION["image"]; ?>" alt="" style="width: 40px; height: 40px;">
-                        <?php }
-                    else{
-                        ?>
+                    <?php } else {
+                    ?>
                         <img class="rounded-circle" src="img/hos.webp" alt="" style="width: 40px; height: 40px;">
 
                     <?php } ?>
                     <?php
-                        if ($_SESSION["panel"]=="admin") {
-                            ?>
-                    <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
-                        <?php } ?>
+                    if ($_SESSION["panel"] == "admin") {
+                    ?>
+                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                    <?php } ?>
                 </div>
                 <div class="ms-3">
                     <h6 class="mb-0"><?php echo $_SESSION["user"]; ?></h6>
                     <span class="d-none d-lg-inline-flex">
                         <?php
-                        if ($_SESSION["panel"]=="admin") {
+                        if ($_SESSION["panel"] == "admin") {
                             if ($_SESSION["role"] == 1) {
                                 echo "Admin";
                             } else {
                                 echo "User";
                             }
-                        }
-                        else{
+                        } else {
                             echo "Hospital";
                         }
                         ?>
@@ -86,21 +84,27 @@ if (!isset($_SESSION['user'])) {
             </div>
 
             <div class="navbar-nav w-100">
-                <a href="index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>USERS</a>
                 <?php
 
                 if ($_SESSION["panel"] == "admin") {
                     if ($_SESSION['role'] == 1) {              ?>
-                    <a href="PATIENT.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>PATIENT</a>
-                    <a href="hospital.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>HOSPITAL</a>
-                    <a href="vaccine.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>VACCINE</a>
-                    <a href="web_user.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>WEB-USER</a>
-                    
-                    <?php }}
-                else{  
+                                        <a href="index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>USERS</a>
+
+                        <a href="PATIENT.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>PATIENT</a>
+                        <a href="hospital.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>HOSPITAL</a>
+                        <a href="vaccine.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>VACCINE</a>
+                        <a href="web_user.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>WEB-USER</a>
+                        
+                        <?php }
+                else {
                     ?>
-                    <a href="PATIENT.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>PATIENT</a>
-                 <?php } ?>
+                    <a href="index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>USERS</a>
+                <?php } }?>
+                <?php
+
+                if ($_SESSION["panel"] == "hospital") {             ?>
+                        <a href="PATIENT.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>PATIENT</a>
+                <?php }?>
             </div>
     </div>
     </nav>
@@ -125,18 +129,17 @@ if (!isset($_SESSION['user'])) {
 
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                    <?php
-                    if ($_SESSION["panel"] == "admin") {
+                        <?php
+                        if ($_SESSION["panel"] == "admin") {
 
 
-                    ?>
-                        <img class="rounded-circle" src="upload/<?php echo $_SESSION["image"]; ?>" alt="" style="width: 40px; height: 40px;">
-                        <?php }
-                    else{
                         ?>
-                        <img class="rounded-circle" src="img/hos.webp" alt="" style="width: 40px; height: 40px;">
+                            <img class="rounded-circle" src="upload/<?php echo $_SESSION["image"]; ?>" alt="" style="width: 40px; height: 40px;">
+                        <?php } else {
+                        ?>
+                            <img class="rounded-circle" src="img/hos.webp" alt="" style="width: 40px; height: 40px;">
 
-                    <?php } ?>
+                        <?php } ?>
                         <span class="d-none d-lg-inline-flex"><?php echo $_SESSION["user"]; ?></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">

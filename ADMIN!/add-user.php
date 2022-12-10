@@ -54,8 +54,11 @@ ob_start();
     }
 
     .option {
-        width: 38.5vw;
+        width: 39vw;
         background-color: white;
+    }
+    .file{
+        margin-left: 80px;
     }
 </style>
 
@@ -66,7 +69,7 @@ ob_start();
 
                 <h6 class="mb-4">Add User</h6>
 
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
@@ -100,7 +103,7 @@ ob_start();
                     <div class="row mb-3">
                         <div class="form-group">
                             <label for="exampleInputPassword1">image</label>
-                            <input type="file" name="fileToUpload" required>
+                            <input class="file" type="file" name="fileToUpload" required>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -118,6 +121,36 @@ ob_start();
                 </form>
                 <?php
                 if (isset($_POST["submit"])) {
+                    $error = array();
+    
+                    $file_name = $_FILES["fileToUpload"]["name"];
+                    $file_size = $_FILES["fileToUpload"]["size"];
+                    $file_type = $_FILES["fileToUpload"]["type"];
+                    $file_temp = $_FILES["fileToUpload"]["tmp_name"];
+                    $file_ext  = explode(".",$file_name);
+                    $file_ext = end($file_ext);
+                    $file_ext = strtolower($file_ext);
+                    $extension = array("jpg","jpeg","png");
+                    
+                
+                    if(in_array($file_ext,$extension) === false)
+                    {
+                        $error = "extension must be png , jpg , jpeg";
+                    }
+                    if($file_size > 2097152)
+                    {
+                        $error = "file size must be less than 2 mb";
+                    }
+                    if(empty($error)== true)
+                    {
+                        move_uploaded_file($file_temp,"upload/".$file_name);
+                    }
+                    else
+                    {
+                        print_r($error);
+                      
+                
+                    }
                     $name = $_POST["name"];
                     $user = $_POST["user"];
                     $password = $_POST["password"];
@@ -126,7 +159,7 @@ ob_start();
                     $role = $_POST["role"];
 
                     include "config.php";
-                    $query = "INSERT INTO `user`( `name`, `username`, `password`, `phone`, `email`, `role`) VALUES ('{$name}','{$user}','{$password}','{$phone}','{$email}','{$role}')";
+                    $query = "INSERT INTO `user`( `name`, `username`, `password`, `phone`, `email`, `role`,`image`) VALUES ('{$name}','{$user}','{$password}','{$phone}','{$email}','{$role}','{$file_name}')";
                     mysqli_query($conn, $query);
                     header("location:http://localhost/e_project/e-project/admin!/index.php");
                 }

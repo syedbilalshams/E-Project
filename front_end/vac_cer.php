@@ -12,13 +12,13 @@
 
                     <div class="card-body">
                         <div class="form-group">
-                            <label>Enter Cnic No.</label>
-                            <input type="text" class="form-control" id="searchdata" name="cnic" required="true"
-                                placeholder="Enter Cnic No.">
+                            <label>Enter Name</label>
+                            <input type="text" class="form-control" id="searchdata" name="name" required="true"
+                                placeholder="Enter Name">
                             </div>
                             <div class="form-group">
-                                <label>Enter Vaccine You Used</label>
-                                <input type="text" class="form-control" id="searchdata" name="vaccine" required="true"
+                                <label>Enter Cnic No.</label>
+                                <input type="text" class="form-control" id="searchdata" name="cnic" required="true"
                                 placeholder="Enter Cnic No.">
                                 <a href="covidresult.php">Search Covid Result</a>
                         </div>
@@ -37,9 +37,9 @@
     <?php
     if (isset($_POST["search"])) {
         include "config.php";
+        $name = $_POST["name"];
         $cnic = $_POST["cnic"];
-        $vac = $_POST["vaccine"];
-        $query = "SELECT * FROM `patient` WHERE `cnnic`='{$cnic}' and `vac_name`='{$vac}' ";
+        $query = "SELECT * FROM `patient` WHERE `cnnic`='{$cnic}' and `name`='{$name}' ";
         $result = mysqli_query($conn,$query);
         if(mysqli_num_rows($result)>0){
             while($row = mysqli_fetch_assoc($result)){

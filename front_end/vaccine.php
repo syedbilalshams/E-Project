@@ -18,6 +18,7 @@
                     <thead>
                         <tr>
                             <th>Vaccine</th>
+                            <th>Quantity</th>
                         </tr>
                     </thead>
                   
@@ -32,6 +33,9 @@
                         <tr>
                             <td>
                                 <?php echo $row['name']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['quantity']; ?>
                             </td>
                         </tr>
                         <?php } ?>

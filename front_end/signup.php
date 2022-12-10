@@ -1,30 +1,6 @@
 <?php include "header.php"; ?>
 <br>
 <br><br>
-<?php
-error_reporting(E_ALL ^ E_WARNING);
-if (isset($_POST["submit"])) {
-    include "config.php";
-    $pname = $_POST["pname"];
-    $pmobile = $_POST["pmobile"];
-    $pgmail = $_POST["pgmail"];
-    $ppass = $_POST["ppass"];
-    $pdob = $_POST["pdob"];
-    $pcnic = $_POST["pcnic"];
-    $paddress = $_POST["paddress"];
-    $pstate = $_POST["pstate"];
-    $query = "SELECT * FROM `patient` WHERE `pgmail`='$pgmail' OR `pmobile`='$pmobile' ;";
-    $result = mysqli_query($conn, $query);
-
-    if (mysqli_num_rows($result) > 0) {
-        echo "User already exits with same gmail OR phone number";
-    } else {
-        $query1 = "INSERT INTO `patient`(`pname`, `pmobile`, `pgmail`, `ppass`, `pdob`, `pcnic`, `paddress`, `pstate`) VALUES ('$pname','$pmobile','$pgmail','$ppass','$pdob','$pcnic','$paddress','$pstate');";
-        mysqli_query($conn, $query1);
-        header($host."/covid/login.php");
-    }
-}
-?>
 <form action="" method="post">
     <div class="container card shadow mb-4">
         <br>
@@ -34,43 +10,29 @@ if (isset($_POST["submit"])) {
         <div class="card-body">
             <div class="form-group">
                 <label>Full Name</label>
-                <input type="text" class="form-control" id="fullname" name="pname" placeholder="Enter your full name..."
-                    pattern="[A-Za-z ]+" title="letters only" required="true">
+                <input type="text" class="form-control" id="fullname" name="name" placeholder="Enter your full name..." pattern="[A-Za-z ]+" title="letters only" required="true">
             </div>
             <div class="form-group">
                 <label>Mobile Number</label>
-                <input type="text" class="form-control" id="mobilenumber" name="pmobile"
-                    placeholder="Please enter your mobile number" pattern="[0-9]{10}" title="10 numeric characters only"
-                    required="true" onBlur="mobileAvailability()">
+                <input type="text" class="form-control" id="" name="phone" placeholder="Please enter your mobile number" pattern="[0-9]{10}" title="10 numeric characters only" required="true" onBlur="mobileAvailability()">
                 <span id="mobile-availability-status" style="font-size:12px;"></span>
             </div>
             <div class="form-group">
                 <label>Gmail</label>
-                <input type="text" class="form-control" id="gmail" name="pgmail" placeholder="Enter Gmail"
-                    required="true">
+                <input type="text" class="form-control" id="gmail" name="gmail" placeholder="Enter Gmail" required="true">
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input type="text" class="form-control" id="gmail" name="ppass" placeholder="Enter Password"
-                    required="true">
+                <input type="password" class="form-control" id="gmail" name="password" placeholder="Enter Password" required="true">
             </div>
             <div class="form-group">
-                <label>DOB</label>
-                <input type="date" class="form-control" id="dob" name="pdob" required="true">
-            </div>
-            <div class="form-group">
-                <label>CNIC</label>
-                <input type="text" class="form-control" id="cnic" name="pcnic" placeholder="CNIC" required="true">
-            </div>
-            <div class="form-group">
-                <label>Address</label>
-                <textarea class="form-control" id="address" name="paddress" required="true"
-                    placeholder="Enter your full addres here"></textarea>
-            </div>
-            <div class="form-group">
-                <label>State</label>
-                <input type="text" class="form-control" id="state" name="pstate" placeholder="Enter your State Here"
-                    required="true">
+                <label>City</label>
+                <select class="form-control option" name="city">
+                    <option value="Karachi">Karachi</option>
+                    <option value="Lahore">Lahore</option>
+                    <option value="Islamabad">Islamabad</option>
+                    <option value="Peshawar">Peshawar</option>
+                </select>
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary btn-user btn-block" name="submit" id="submit">
@@ -78,4 +40,26 @@ if (isset($_POST["submit"])) {
         </div>
     </div>
 </form>
-<?php include "footer.php"; ?>
+<?php
+
+if (isset($_POST["submit"])) {
+    $name = $_POST["name"];
+    $phone = $_POST["phone"];
+    $gmail = $_POST["gmail"];
+    $password = $_POST["password"];
+    $city = $_POST["city"];
+    include "config.php";
+    $query = "SELECT * FROM p_user WHERE `email` = '{$gmail}'";
+    $result = mysqli_query($conn,$query);
+    if(mysqli_num_rows($result)>0){
+        echo "email taken";
+    }
+    else{
+        include "config.php";
+        $query = "INSERT INTO `p_user`( `name`, `email`, `password`, `phone`, `city`) VALUES ('{$name}','{$gmail}','{$password}','{$phone}','{$city}')";
+        mysqli_query($conn,$query);
+    }
+}
+?>
+
+<?php include "footer.php"; ?>  

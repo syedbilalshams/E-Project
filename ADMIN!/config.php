@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect("localhost","root","","corona1") or die("Connection Unsuccesful");
+$conn = mysqli_connect("localhost","root","","corona") or die("Connection Unsuccesful");
 
 
 

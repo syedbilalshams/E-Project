@@ -35,7 +35,7 @@
     <?php include "nav.php";
 
     include "config.php";
-    $query = "SELECT DISTINCT name , h_id ,city FROM hospital;";
+    $query = "SELECT DISTINCT name , h_id ,city,phone FROM hospital;";
     $result = mysqli_query($conn, $query);
 
 
@@ -50,13 +50,14 @@
         <div class="row g-4">
             <div class="col-sm-12 col-xl-6">
                 <div class="bg-light rounded h-100 p-4">
-                    <h6 class="mb-4">Hospital</h6>
+                    <h4 class="mb-4">Hospital</h4>
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col"> Name</th>
                                     <th scope="col">City</th>
+                                    <th scope="col">Phone</th>
                                     <th scope="col">Update</th>
                                     <th scope="col">Delete</th>
                                 </tr>
@@ -69,6 +70,7 @@
                                         <th scope="row"><?php echo $row["h_id"] ?></th>
                                         <td><?php echo $row["name"] ?></td>
                                         <td><?php echo $row["city"] ?></td>
+                                        <td><?php echo $row["phone"] ?></td>
                                         <td><a href="update_hospital.php?id=<?php echo $row["h_id"] ?>">Update</a></td>
                                         <td><a href="delete_hospital.php?id=<?php echo $row["h_id"] ?>">Delete</a></td>
                                     </tr>

@@ -21,32 +21,44 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label>Full Name</label>
-                            <input type="text" class="form-control" id="fullname" name="pname" placeholder="Enter your full name..." pattern="[A-Za-z ]+" title="letters only" required="true">
+                            <input type="text" class="form-control" id="fullname" name="name" placeholder="Enter your full name..." pattern="[A-Za-z ]+" title="letters only" required="true">
                         </div>
                         <div class="form-group">
                             <label>Mobile Number</label>
-                            <input type="text" class="form-control" id="mobilenumber" name="pmobile" placeholder="Please enter your mobile number" pattern="[0-9]{10}" title="10 numeric characters only" required="true" onBlur="mobileAvailability()">
+                            <input type="text" class="form-control" id="mobilenumber" name="mobile" placeholder="Please enter your mobile number" pattern="[0-9]{10}" title="10 numeric characters only" required="true" onBlur="mobileAvailability()">
                             <span id="mobile-availability-status" style="font-size:12px;"></span>
                         </div>
                         <div class="form-group">
                             <label>Gmail</label>
-                            <input type="text" class="form-control" id="gmail" name="pgmail" placeholder="Enter Gmail" required="true">
+                            <input type="text" class="form-control" id="gmail" name="gmail" placeholder="Enter Gmail" required="true">
                         </div>
                         <div class="form-group">
                             <label>DOB</label>
-                            <input type="date" class="form-control" id="dob" name="pdob" required="true">
+                            <input type="date" class="form-control" id="dob" name="dob" required="true">
                         </div>
                         <div class="form-group">
                             <label>CNIC</label>
-                            <input type="text" class="form-control" id="cnic" name="pcnic" placeholder="CNIC" required="true">
+                            <input type="text" class="form-control" id="cnic" name="cnic" placeholder="CNIC" required="true">
                         </div>
                         <div class="form-group">
                             <label>Address</label>
-                            <textarea class="form-control" id="address" name="paddress" required="true" placeholder="Enter your full addres here"></textarea>
+                            <textarea class="form-control" id="address" name="address" required="true" placeholder="Enter your full addres here"></textarea>
                         </div>
                         <div class="form-group">
-                            <label>State</label>
-                            <input type="text" class="form-control" id="state" name="pstate" placeholder="Enter your State Here" required="true">
+                            <label>CITY</label>
+                            <select class="form-control" id="testtype" name="city" required="true">
+                                <option value="">Select City</option>
+                                <?php
+                                include "config.php";
+                                $query = "SELECT * FROM `hospital` ";
+                                $result = mysqli_query($conn, $query);
+                                if (mysqli_num_rows($result) > 0) {
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        echo "<option value='{$row['city']}'>{$row['city']}</option>";
+                                    }
+                                }
+                                ?>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -61,7 +73,23 @@
                     </div>
                     <div class="card-body">
 
-
+                    <div class="form-group">
+                            <label>hospital</label>
+                            <select class="form-control" id="testtype" name="hospital" required="true">
+                                <option value="">Select hospital</option>
+                                <?php
+                                include "config.php";
+                                $query = "SELECT * FROM `hospital`;
+                                ";
+                                $result = mysqli_query($conn, $query);
+                                if (mysqli_num_rows($result) > 0) {
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        echo "<option value='{$row['name']}'>{$row['name']}</option>";
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label>Time Slot for Test</label>
                             <input type="datetime-local" class="form-control" id="birthdaytime" name="testtime" class="form-control">

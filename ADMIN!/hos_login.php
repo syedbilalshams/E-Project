@@ -98,7 +98,7 @@ if(isset($_SESSION['user'])){
                             $_SESSION['panel']= "hospital";
                             $_SESSION['city']= $row['city'];
                         //    print_r($_SESSION); 
-                            header("location:http://localhost/e_project/e-project/admin!/");
+                            header("location:http://localhost/e_project/e-project/admin!/patient.php");
                            }
                         }
                         else{

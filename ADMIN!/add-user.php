@@ -99,7 +99,7 @@ ob_start();
                     </div>
                     <div class="row mb-3">
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Product image</label>
+                            <label for="exampleInputPassword1">image</label>
                             <input type="file" name="fileToUpload" required>
                         </div>
                     </div>

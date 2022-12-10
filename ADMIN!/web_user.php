@@ -39,18 +39,21 @@
     <?php
     include "nav.php";
     include "config.php";
-    $query = "SELECT * FROM `patient`";
+    $query = "SELECT * FROM `p_user`";
     $result = mysqli_query($conn, $query);
     if (mysqli_num_rows($result) > 0) {
     ?>
 
         <div class="container-fluid pt-4 px-4">
+            <?php 
+                if($_SESSION['role'] == 1){
+                    ?>
+                    <?php } ?>
                     <div class="row g-2 ">
                     <div class="bg-light all rounded h-100 p-4">
                         <h4 class="mb-4">Patients</h4>
                         <table class="table">
 
-                       
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
@@ -58,41 +61,25 @@
                                     <th scope="col">Email</th>
                                     <th scope="col">Phone</th>
                                     <th scope="col">City</th>
-                                    <th scope="col">Hospital</th>
-                                    <th scope="col">CNIC</th>
-                                    <th scope="col">DOB</th>
-                                    <th scope="col">Address</th>
-                                    <th scope="col">Query</th>
-                                    <th scope="col">Vac_name</th>
                                 </tr>
                             </thead>
                             <?php
                             while ($row = mysqli_fetch_assoc($result)) {
-                                
-                                if($_SESSION["user"]==$row["hospital"] || $_SESSION["panel"]=="admin"){
-
-                                
 
 
                             ?>
                                 <tbody>
                                     <tr>
-                                        <th scope="row"><?php echo $row["p_id"]; ?></th>
+                                        <th scope="row"><?php echo $row["w_id"]; ?></th>
                                         <td><?php echo $row["name"]; ?></td>
                                         <td><?php echo $row["email"]; ?></td>
                                         <td><?php echo $row["phone"]; ?></td>
                                         <td><?php echo $row["city"]; ?></td>
-                                        <td><?php echo $row["hospital"]; ?></td>
-                                        <td><?php echo $row["cnnic"]; ?></td>
-                                        <td><?php echo $row["dob"]; ?></td>
-                                        <td><?php echo $row["address"]; ?></td>
-                                        <td><?php echo $row["query"]; ?></td>
-                                        <td><?php echo $row["vac_name"]; ?></td>
 
                                               
                                         <?php } ?>
                                     </tr>
-                                </tbody> <?php } }?>
+                                </tbody> <?php } ?>
                         </table>
                     </div>
                 </div> <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

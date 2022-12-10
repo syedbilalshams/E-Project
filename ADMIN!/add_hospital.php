@@ -44,12 +44,25 @@ ob_start();
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 50vh;
-        width: 80vh;
+        height: 70vh;
+        width: 90vh;
     }
 
     .user {
         display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .vacc{
+        display: flex;
+        flex-direction: row;
+        width: 40vw;
+        justify-content: space-between;
+    }
+    .vacc select{
+        background-color: white;
+        display: flex;
+        margin-left: 40px;
         flex-direction: row;
         justify-content: space-between;
     }
@@ -81,7 +94,13 @@ ob_start();
                             <input type="password" name="password" class="form-control" id="inputPassword3">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Phone</label>
+                        <div class="col-sm-10">
+                            <input type="number" name="phone" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group vacc">
                           <label for="exampleInputPassword1">Vaccine</label>
                           <select name="vaccine" class="form-control">
                               <option value="" disabled> Select Vaccine</option>
@@ -99,7 +118,14 @@ ob_start();
                               
                               ?>
                           </select>
-                      </div>
+                      </div><br>
+                      <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Quantity</label>
+                        <div class="col-sm-10">
+                            <input type="number" name="qty" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+
                     <button type="submit" name="submit" class="btn btn-primary">Add-Hospital</button>
                 </form>
                 <?php

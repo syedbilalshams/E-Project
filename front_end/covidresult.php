@@ -3,7 +3,7 @@
 
 <div class="container">
     <h1 class="h3 mb-4 text-gray-800">Search Report</h1>
-    <form method="post" action="">
+    <form method="POST" action="">
         <div class="row">
 
             <div class="col-lg-6">
@@ -12,9 +12,10 @@
 
                     <div class="card-body">
                         <div class="form-group">
-                            <label>Search By Order number</label>
+                            <label>Search By Cnic No.</label>
                             <input type="text" class="form-control" id="searchdata" name="searchdata" required="true"
-                                placeholder="Enter Order number">
+                                placeholder="Enter Cnic No.">
+                                <a href="vac_cer.php">Search Vaccination Certificate</a>
                         </div>
 
 
@@ -31,19 +32,16 @@
     <?php
     if (isset($_POST["search"])) {
         include "config.php";
-        $mobile = $_POST["searchdata"];
-        $sql = "SELECT `orderno`, `name`, `mobile`, `gmail`, `dob`, `cnic`, `address`, `state`, `timeslot`, `hospital`, `remarks` FROM `covidtest` WHERE `orderno`='$mobile';";
-        $result = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($result) > 0) {
-        }
-    ?>
-    <?php
-        $cnt = 1;
-        while ($row = mysqli_fetch_assoc($result)) {
-    ?>
+        $res = $_POST["searchdata"];
+        $query = "SELECT * FROM `patient` WHERE `cnnic`='{$res}' and `query`='covid-test' ";
+        $result = mysqli_query($conn,$query);
+        if(mysqli_num_rows($result)>0){
+            while($row = mysqli_fetch_assoc($result)){
+
+     ?>
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">Test Details#
-        <?php echo $row['orderno']; ?>
+        <?php echo $row['name']; ?>
     </h1>
     <div class="row">
         <!-- personal information --->
@@ -67,7 +65,7 @@
                         <tr>
                             <th>Mobile Number</th>
                             <td>
-                                <?php echo $row['mobile']; ?>
+                                <?php echo $row['phone']; ?>
                             </td>
                         </tr>
 
@@ -82,7 +80,7 @@
                         <tr>
                             <th>Cnic</th>
                             <td>
-                                <?php echo $row['cnic']; ?>
+                                <?php echo $row['cnnic']; ?>
                             </td>
                         </tr>
 
@@ -97,7 +95,7 @@
                         <tr>
                             <th>State</th>
                             <td>
-                                <?php echo $row['state']; ?>
+                                <?php echo $row['city']; ?>
                             </td>
                         </tr>
                     </table>
@@ -122,39 +120,27 @@
                         <tr>
                             <th>Order Number</th>
                             <td>
-                                <?php echo $row['orderno']; ?>
+                                <?php echo $row['p_id']; ?>
                             </td>
                         </tr>
 
                         <tr>
                             <th>Time Slot</th>
                             <td>
-                                <?php echo $row['timeslot']; ?>
+                                <?php echo $row['time_slot']; ?>
                             </td>
                         </tr>
                         <tr>
                             <th>Hospital</th>
                             <td>
-                                <?php if ($row['hospital'] == '0')
-                echo "Not Processed yet";
-            else
-                echo $row['hospital'];
-            ;
-
-                                ?>
+                                <?php echo $row['hospital']; ?>
                             </td>
                         </tr>
 
                         <tr>
                             <th>Report Status</th>
                             <td>
-                                <?php if ($row['remarks'] == '0')
-                echo "Not Processed yet";
-            else
-                echo $row['remarks'];
-            ;
-
-                                ?>
+                                <?php echo "Negative" ?>
                             </td>
                         </tr>
 
@@ -167,10 +153,13 @@
                     </table>
                 </div>
             </div>
-
+<?php } }
+else{
+    echo "Not Found Any Report A/c To This CNIC";
+}
+    }
+?>
         </div>
     </div>
-    <?php } ?>
-    <?php } ?>
 </div>
 <?php include "footer.php"; ?>

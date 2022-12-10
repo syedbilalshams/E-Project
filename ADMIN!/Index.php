@@ -47,13 +47,12 @@
             <?php
             if ($_SESSION["panel"] == "admin") {
                 if ($_SESSION['role'] == 1) {
-                }
             ?>
                 <a type="button" href="add-user.php" class="btn add btn-primary m-2">Add-User</a>
-            <?php } ?>
+            <?php } } ?>
             <div class="row g-4 ">
                 <div class="bg-light all rounded h-100 p-4">
-                    <h6 class="mb-4">Users</h6>
+                    <h4 class="mb-4">Users</h4>
                     <table class="table">
 
                         <thead>
@@ -66,11 +65,10 @@
                                 <th scope="col">Role</th>
                                 <?php
                                 if ($_SESSION["panel"] == "admin") {
-                                    if ($_SESSION['role'] == 1) {
-                                    }                                        ?>
+                                    if ($_SESSION['role'] == 1) {                                     ?>
                                     <th scope="col">Update</th>
                                     <th scope="col">Delete</th>
-                                <?php } ?>
+                                <?php } } ?>
                             </tr>
                         </thead>
                         <?php
@@ -90,16 +88,16 @@
                                         if ($row["role"] == 1) {
                                             echo "Admin";
                                         } else {
-                                            echo "Admin";
+                                            echo "user";
                                         }
                                         ?></td>
                                     <?php   
                                     if ($_SESSION["panel"] == "admin") {
                                         if ($_SESSION['role'] == 1) {
-                                        }                                    ?>
+                                                                            ?>
                                         <td><a href="update_user.php?id=<?php echo $row["u_id"]; ?>">Update</a></td>
                                         <td><a href="delete_user.php?id=<?php echo $row["u_id"]; ?>">Delete</a></td>
-                                    <?php } ?>
+                                    <?php  }} ?>
                                 </tr>
                             </tbody> <?php }
                                 } ?>

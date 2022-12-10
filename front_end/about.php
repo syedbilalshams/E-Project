@@ -64,45 +64,57 @@
         </div>
 
         <div class="row">
-          <div class="col-lg-4">
-            <div class="team">
-              <img src="images/person_1.jpg" alt="Image" class="img-fluid">
-              <h3>Asad</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut commodi accusantium eveniet nemo maiores deleniti rerum animi, deserunt veniam error.</p>
-              <p>
-                <span class="d-block mb-2"><strong>Connect on social</strong></span>
-                <a href="#" class="p-2 icon-facebook"></a>
-                <a href="#" class="p-2 icon-twitter"></a>
-                <a href="#" class="p-2 icon-linkedin"></a>
-                <a href="#" class="p-2 icon-instagram"></a>
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="team">
-              <img src="images/person_2.jpg" alt="Image" class="img-fluid">
-              <h3>Ali</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut commodi accusantium eveniet nemo maiores deleniti rerum animi, deserunt veniam error.</p>
-              <p>
-                <span class="d-block mb-2"><strong>Connect on social</strong></span>
-                <a href="#" class="p-2 icon-facebook"></a>
-                <a href="#" class="p-2 icon-twitter"></a>
-                <a href="#" class="p-2 icon-linkedin"></a>
-                <a href="#" class="p-2 icon-instagram"></a>
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-4">
+          <div class="col-lg-3">
             <div class="team">
               <img src="images/person_3.jpg" alt="Image" class="img-fluid">
-              <h3>Ahmed Khan</h3>
+              <h3>Sameer</h3>
+              <p>PHP Web Application Developer<p>
+                <span class="d-block mb-2"><strong>Connect on social</strong></span>
+                <a href="https://www.facebook.com/login/?privacy_mutation_token=eyJ0eXBlIjowLCJjcmVhdGlvbl90aW1lIjoxNjcwNjcxNjgzLCJjYWxsc2l0ZV9pZCI6MjY5NTQ4NDUzMDcyMDk1MX0%3D" class="p-2 icon-facebook"></a>
+                <a href="https://twitter.com/i/flow/login" class="p-2 icon-twitter"></a>
+                <a href="https://pk.linkedin.com/" class="p-2 icon-linkedin"></a>
+                <a href="https://www.instagram.com/" class="p-2 icon-instagram"></a>
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="team">
+              <img src="images/person_3.jpg" alt="Image" class="img-fluid">
+              <h3>Usman</h3>
+              <p>PHP Web Application Developer<p>
+                <span class="d-block mb-2"><strong>Connect on social</strong></span>
+                <a href="https://www.facebook.com/login/?privacy_mutation_token=eyJ0eXBlIjowLCJjcmVhdGlvbl90aW1lIjoxNjcwNjcxNjgzLCJjYWxsc2l0ZV9pZCI6MjY5NTQ4NDUzMDcyMDk1MX0%3D" class="p-2 icon-facebook"></a>
+                <a href="https://twitter.com/i/flow/login" class="p-2 icon-twitter"></a>
+                <a href="https://pk.linkedin.com/" class="p-2 icon-linkedin"></a>
+                <a href="https://www.instagram.com/" class="p-2 icon-instagram"></a>
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="team">
+              <img src="images/person_3.jpg" alt="Image" class="img-fluid">
+              <h3>Bilal</h3>
               <p>PHP Web Application Developer</p>
               <p>
                 <span class="d-block mb-2"><strong>Connect on social</strong></span>
-                <a href="#" class="p-2 icon-facebook"></a>
-                <a href="#" class="p-2 icon-twitter"></a>
-                <a href="#" class="p-2 icon-linkedin"></a>
-                <a href="#" class="p-2 icon-instagram"></a>
+                <a href="https://www.facebook.com/login/?privacy_mutation_token=eyJ0eXBlIjowLCJjcmVhdGlvbl90aW1lIjoxNjcwNjcxNjgzLCJjYWxsc2l0ZV9pZCI6MjY5NTQ4NDUzMDcyMDk1MX0%3D" class="p-2 icon-facebook"></a>
+                <a href="https://twitter.com/i/flow/login" class="p-2 icon-twitter"></a>
+                <a href="https://pk.linkedin.com/" class="p-2 icon-linkedin"></a>
+                <a href="https://www.instagram.com/" class="p-2 icon-instagram"></a>
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="team">
+              <img src="images/person_3.jpg" alt="Image" class="img-fluid">
+              <h3>Abdullah</h3>
+              <p>PHP Web Application Developer</p>
+              <p>
+                <span class="d-block mb-2"><strong>Connect on social</strong></span>
+                <a href="https://www.facebook.com/login/?privacy_mutation_token=eyJ0eXBlIjowLCJjcmVhdGlvbl90aW1lIjoxNjcwNjcxNjgzLCJjYWxsc2l0ZV9pZCI6MjY5NTQ4NDUzMDcyMDk1MX0%3D" class="p-2 icon-facebook"></a>
+                <a href="https://twitter.com/i/flow/login" class="p-2 icon-twitter"></a>
+                <a href="https://pk.linkedin.com/" class="p-2 icon-linkedin"></a>
+                <a href="https://www.instagram.com/" class="p-2 icon-instagram"></a>
               </p>
             </div>
           </div>

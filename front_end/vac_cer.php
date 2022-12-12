@@ -39,13 +39,86 @@
         include "config.php";
         $name = $_POST["name"];
         $cnic = $_POST["cnic"];
-        $query = "SELECT * FROM `patient` WHERE `cnnic`='{$cnic}' and `name`='{$name}' ";
+        $query = "SELECT * FROM `patient` WHERE `cnic`='{$cnic}' and `name`='{$name}' ";
         $result = mysqli_query($conn,$query);
         if(mysqli_num_rows($result)>0){
             while($row = mysqli_fetch_assoc($result)){
 
      ?>
-    
+    <div class="col-lg-6">
+
+<!-- Basic Card Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Vaccine Information</h6>
+    </div>
+    <div class="card-body">
+
+        <table class="table table-bordered" width="100%" cellspacing="0">
+            <tr>
+                <th>#</th>
+                <td>
+                    <?php echo $row['p_id']; ?>
+                </td>
+            </tr>
+
+            <tr>
+                <th>Time Slot</th>
+                <td>
+                    <?php echo $row['time_slot']; ?>
+                </td>
+            </tr>
+            <tr>
+                <th>Hospital</th>
+                <td>
+                    <?php echo $row['hospital']; ?>
+                </td>
+            </tr>
+
+            <tr>
+                <th>Gender</th>
+                <td>
+                    <?php echo $row["gender"]; ?>
+                </td>
+            </tr>
+
+            <tr>
+                <th>CNIC</th>
+                <td>
+                    <?php echo $row["cnic"]; ?>
+                </td>
+            </tr>
+            
+            <tr>
+                <th>Vaccine Used</th>
+                <td>
+                    <?php echo $row["vac_name"]; ?>
+                </td>
+            </tr>
+
+            <tr>
+                <th>Email</th>
+                <td>
+                    <?php echo $row["email"]; ?>
+                </td>
+            </tr>
+
+            <tr>
+                <th>Address</th>
+                <td>
+                    <?php echo $row["address"]; ?>
+                </td>
+            </tr>
+            
+            <tr>
+                <th>Report</th>
+                <td><a href="reportfiles/<?php echo $row['FinalReport']; ?>" target="_blank">Download</a>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
 <?php } }
 else{
     echo "Not Found Any  A/c To This CNIC";

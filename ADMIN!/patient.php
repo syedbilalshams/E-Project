@@ -83,7 +83,7 @@
                                         <td><?php echo $row["phone"]; ?></td>
                                         <td><?php echo $row["city"]; ?></td>
                                         <td><?php echo $row["hospital"]; ?></td>
-                                        <td><?php echo $row["cnnic"]; ?></td>
+                                        <td><?php echo $row["cnic"]; ?></td>
                                         <td><?php echo $row["dob"]; ?></td>
                                         <td><?php echo $row["address"]; ?></td>
                                         <td><?php echo $row["query"]; ?></td>

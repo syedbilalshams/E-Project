@@ -137,7 +137,9 @@ ob_start();
                     $city = $_POST["city"];
                     $vaccine = $_POST["vaccine"];
                     $password = $_POST["password"];
-                    $query =  "INSERT INTO `hospital`( `name`, `city`, `password`, `vaccine`) VALUES ('{$name}','{$city}','{$password}','{$vaccine}')";
+                    $phone = $_POST["phone"];
+                    $qty = $_POST["qty"];
+                    $query =  "INSERT INTO `hospital`( `name`, `city`, `password`, `vaccine`,`phone`,`quantity`) VALUES ('{$name}','{$city}','{$password}','{$vaccine}','{$phone}','{$qty}')";
                     mysqli_query($conn, $query);
 
                     header("location:http://localhost/e_project/e-project/admin!/hospital.php");

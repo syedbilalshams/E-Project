@@ -41,6 +41,13 @@
                             <input type="text" class="form-control" id="cnic" name="cnic" placeholder="CNIC" required="true">
                         </div>
                         <div class="form-group">
+                            <label>Gender</label>
+                            <select name="gender" class="form-control">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label>Address</label>
                             <textarea class="form-control" id="address" name="address" required="true" placeholder="Enter your full addres here"></textarea>
                         </div>

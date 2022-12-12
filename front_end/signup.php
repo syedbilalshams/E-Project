@@ -1,7 +1,7 @@
 <?php include "header.php"; ?>
 <br>
 <br><br>
-<form action="" method="post">
+<form action="s_login.php" method="post">
     <div class="container card shadow mb-4">
         <br>
         <div class="card-header py-3">
@@ -13,9 +13,8 @@
                 <input type="text" class="form-control" id="fullname" name="name" placeholder="Enter your full name..." pattern="[A-Za-z ]+" title="letters only" required="true">
             </div>
             <div class="form-group">
-                <label>Mobile Number</label>
-                <input type="text" class="form-control" id="" name="phone" placeholder="Please enter your mobile number" pattern="[0-9]{10}" title="10 numeric characters only" required="true" onBlur="mobileAvailability()">
-                <span id="mobile-availability-status" style="font-size:12px;"></span>
+                <label>Phone</label>
+                <input type="text" class="form-control" id="fullname" name="name" placeholder="Enter your full name..." pattern="[A-Za-z ]+" title="letters only" required="true">
             </div>
             <div class="form-group">
                 <label>Gmail</label>
@@ -40,26 +39,5 @@
         </div>
     </div>
 </form>
-<?php
-
-if (isset($_POST["submit"])) {
-    $name = $_POST["name"];
-    $phone = $_POST["phone"];
-    $gmail = $_POST["gmail"];
-    $password = $_POST["password"];
-    $city = $_POST["city"];
-    include "config.php";
-    $query = "SELECT * FROM p_user WHERE `email` = '{$gmail}'";
-    $result = mysqli_query($conn,$query);
-    if(mysqli_num_rows($result)>0){
-        echo "email taken";
-    }
-    else{
-        include "config.php";
-        $query = "INSERT INTO `p_user`( `name`, `email`, `password`, `phone`, `city`) VALUES ('{$name}','{$gmail}','{$password}','{$phone}','{$city}')";
-        mysqli_query($conn,$query);
-    }
-}
-?>
 
 <?php include "footer.php"; ?>  

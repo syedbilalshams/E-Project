@@ -101,7 +101,7 @@
                     '<li class="has-children">
                   <a href="" class="nav-link">Login</a>
                   <ul class="dropdown">
-                    <li><a href="login.php" class="nav-link">Login</a></li>
+                     <li><a href="login.php" class="nav-link">Login</a></li>
                     <li><a href="signup.php" class="nav-link">Signup</a></li>
                   </ul>
                 </li>';

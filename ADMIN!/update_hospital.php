@@ -86,13 +86,19 @@ ob_start();
                     <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
-                            <input type="text" name="name" class="form-control" id="inputEmail3" placeholder="<?php echo $row["name"]; ?>">
+                            <input type="text" name="name" class="form-control" id="inputEmail3" value="<?php echo $row["name"]; ?>">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputPassword3" class="col-sm-2 col-form-label">City</label>
                         <div class="col-sm-10">
-                            <input type="text" name="city" class="form-control" id="inputPassword3" placeholder="<?php echo $row["city"]; ?>">
+                            <input type="text" name="city" class="form-control" id="inputPassword3" value="<?php echo $row["city"]; ?>">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Phone</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="phone" class="form-control" id="inputPassword3" value="<?php echo $row["phone"]; ?>">
                         </div>
                     </div>
                     <button type="submit" name="submit" class="btn btn-primary">Add-Hospital</button>
@@ -104,9 +110,10 @@ ob_start();
                                     $id = $_GET["id"];
                                     $name = $_POST["name"];
                                     $city = $_POST["city"];
+                                    $phone = $_POST["phone"];
 
                                     include "config.php";
-                                    $query = "UPDATE `hospital` SET `name`='{$name}',`city`='{$city}' WHERE `h_id` = '{$id}'";
+                                    $query = "UPDATE `hospital` SET `name`='{$name}',`city`='{$city}',`phone`='{$phone}' WHERE `h_id` = '{$id}'";
                                     mysqli_query($conn, $query);
 
                                     header("location:http://localhost/e_project/e-project/admin!/hospital.php");

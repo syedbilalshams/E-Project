@@ -33,7 +33,7 @@
     if (isset($_POST["search"])) {
         include "config.php";
         $res = $_POST["searchdata"];
-        $query = "SELECT * FROM `patient` WHERE `cnnic`='{$res}' and `query`='covid-test' ";
+        $query = "SELECT * FROM `patient` WHERE `cnic`='{$res}' and `query`='covid-test' ";
         $result = mysqli_query($conn,$query);
         if(mysqli_num_rows($result)>0){
             while($row = mysqli_fetch_assoc($result)){
@@ -80,7 +80,7 @@
                         <tr>
                             <th>Cnic</th>
                             <td>
-                                <?php echo $row['cnnic']; ?>
+                                <?php echo $row['cnic']; ?>
                             </td>
                         </tr>
 
@@ -118,7 +118,7 @@
 
                     <table class="table table-bordered" width="100%" cellspacing="0">
                         <tr>
-                            <th>Order Number</th>
+                            <th>#</th>
                             <td>
                                 <?php echo $row['p_id']; ?>
                             </td>
@@ -157,7 +157,7 @@
 else{
     echo "Not Found Any Report A/c To This CNIC";
 }
-    }
+    }   
 ?>
         </div>
     </div>

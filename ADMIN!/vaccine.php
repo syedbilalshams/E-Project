@@ -65,9 +65,11 @@
                                         <th scope="row"><?php echo $row["v_id"] ?></th>
                                         <td><?php echo $row["name"] ?></td>
                                         <?php
-                                        $query1 = ""
+                                        
                                         ?>
-                                        <td><?php echo $row["quantity"] ?></td>
+                                        <td><?php
+                                        echo $row["quantity"];
+                                        ?></td>
                                     </tr>
                                 </tbody>
                         <?php }
